@@ -11,10 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.command.Command;
 import kr.co.command.CommandAction;
+import kr.co.command.DeleteCommand;
 import kr.co.command.InsertCommand;
 import kr.co.command.InsertUICommand;
+import kr.co.command.ListCommand;
 import kr.co.command.LoginCommand;
 import kr.co.command.MainCommand;
+import kr.co.command.NewPost;
+import kr.co.command.ReadCommand;
+import kr.co.command.ReplyCommand;
+import kr.co.command.ReplyUICommand;
+import kr.co.command.SearchCommand;
+import kr.co.command.UpdateCommand;
+import kr.co.command.UpdateUICommnad;
 
 
 /**
@@ -49,6 +58,24 @@ public class FrontController extends HttpServlet {
 			com = new LoginCommand();
 		}else if(sp.equalsIgnoreCase("/main.do")) {
 			com = new MainCommand();
+		}else if(sp.equalsIgnoreCase("newPost.do")) {
+			com = new NewPost();
+		}else if (sp.equalsIgnoreCase("/list.do")) {
+			com = new ListCommand();
+		}else if (sp.equalsIgnoreCase("/read.do")) {
+			com = new ReadCommand();
+		}else if (sp.equalsIgnoreCase("/updateui.do")) {
+			com = new UpdateUICommnad();
+		}else if (sp.equalsIgnoreCase("/update.do")) {
+			com = new UpdateCommand();
+		}else if (sp.equalsIgnoreCase("/replyui.do")) {
+			com = new ReplyUICommand();
+		}else if (sp.equalsIgnoreCase("/reply.do")) {
+			com = new ReplyCommand();
+		}else if (sp.equalsIgnoreCase("/search.do")) {
+			com = new SearchCommand();
+		}else if (sp.equalsIgnoreCase("/delete.do")) {
+			com = new DeleteCommand();
 		}
 		
 		
