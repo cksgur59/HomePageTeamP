@@ -110,26 +110,34 @@ a {
 		</div>
 	</form>
 	<script>
-		/* RegiInfoServlet으로 이동 */
-		function regiButton() {
-			location.href = "register?type=moveRegister"
-		}
-
 		// 로그인 버튼 클릭시에 동작하는 함수 
-		$("#_btnLogin").click(function() {
-			if ($("#id").val().trim() == "") {
-				alert("id를 입력해 주십시오");
-				$("#id").focus();
-			} else if ($("#password").val().trim() == "") {
-				alert("password를 입력해 주십시오");
-				$("#password").focus();
-			} else {
-				//LoginServlet 으로 이동
-				$("#frm").attr({
-					"action" : "login",
-					"method" : "post"
-				}).submit();
-			}
+		$("#_btnLogin").click(function(event) {
+			event.preventDefault();
+
+			var id = $("input[name='id']").val();
+			var password = $("input[name='password']").val();
+			
+			$.ajax({
+				type: 'get',
+	            url: 'loginCheck',
+	            data: {
+	               id : id,
+	               password : password
+	            },
+	            dataType: 'text',
+	            success: function(loginCheckResult) {
+	            	if(loginCheckResult=="1"){
+	            		location.href = "login.do?id="+id+"&password="+password;
+	            	}else{
+	            	console.log(loginCheckResult);
+	            	alert(loginCheckResult);
+	            	}
+	            },
+	            error: function(request, status, error) {
+	               console.log(error);
+	               alert(loginCheckResult);
+	            },
+			});
 		});
 
 		var user_id = $.cookie("user_id");
@@ -144,7 +152,6 @@ a {
 			if ($("#chk_save_id").is(":checked")) { // 체크 되었을 때
 
 				if ($("#id").val().trim() == "") {
-					alert("id를 입력해 주십시오");
 					$("#chk_save_id").prop("checked", false);
 				} else { // 정상 기입한 경우
 					// 쿠키 저장

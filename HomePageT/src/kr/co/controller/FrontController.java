@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.command.Command;
 import kr.co.command.CommandAction;
+import kr.co.command.InsertCommand;
 import kr.co.command.InsertUICommand;
+import kr.co.command.LoginCommand;
+import kr.co.command.MainCommand;
 
 
 /**
@@ -40,6 +43,12 @@ public class FrontController extends HttpServlet {
 		
 		if(sp.equalsIgnoreCase("/insertui.do")) {
 			com = new InsertUICommand();
+		}else if(sp.equalsIgnoreCase("/insert.do")) {
+			com = new InsertCommand();
+		}else if(sp.equalsIgnoreCase("/login.do")) {
+			com = new LoginCommand();
+		}else if(sp.equalsIgnoreCase("/main.do")) {
+			com = new MainCommand();
 		}
 		
 		
