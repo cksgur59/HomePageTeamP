@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.command.AdminPageCommand;
 import kr.co.command.Command;
 import kr.co.command.CommandAction;
 import kr.co.command.DeleteCommand;
@@ -16,6 +17,7 @@ import kr.co.command.InsertCommand;
 import kr.co.command.InsertUICommand;
 import kr.co.command.ListCommand;
 import kr.co.command.LoginCommand;
+import kr.co.command.LogoutCommand;
 import kr.co.command.MainCommand;
 import kr.co.command.NewPost;
 import kr.co.command.ReadCommand;
@@ -76,6 +78,10 @@ public class FrontController extends HttpServlet {
 			com = new SearchCommand();
 		}else if (sp.equalsIgnoreCase("/delete.do")) {
 			com = new DeleteCommand();
+		}else if (sp.equalsIgnoreCase("/logout.do")) {
+			com = new LogoutCommand();
+		}else if (sp.equalsIgnoreCase("/adminPage.do")) {
+			com = new AdminPageCommand();
 		}
 		
 		

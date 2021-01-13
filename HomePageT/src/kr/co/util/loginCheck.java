@@ -35,7 +35,7 @@ public class loginCheck extends HttpServlet {
 
 		MemberDAO dao = new MemberDAO();
 		String loginCheckmsg = null;
-		MemberDTO lgi = new MemberDTO(id, password, null, null, null, null, null, null);
+		MemberDTO lgi = new MemberDTO(id, password, null, null, null, null, null, null , null);
 		MemberDTO login = dao.login(lgi);
 
 		if(login.getName() == null) {

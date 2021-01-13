@@ -19,7 +19,7 @@ public class LoginCommand implements Command {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		MemberDTO lgi = new MemberDTO(id, password, null, null, null, null, null, null);
+		MemberDTO lgi = new MemberDTO(id, password, null, null, null, null, null, null , null);
 		MemberDAO dao = new MemberDAO();
 		
 		MemberDTO login = dao.login(lgi);

@@ -23,7 +23,7 @@ public class InsertCommand implements Command {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String address = request.getParameter("address");
 		
-		MemberDTO dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, null);
+		MemberDTO dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, null , "user");
 		MemberDAO dao = new MemberDAO();
 		dao.insertMember(dto);
 		

@@ -16,7 +16,8 @@ email VARCHAR2(30),
 phoneNumber VARCHAR2(12),
 address VARCHAR2(200),
 gender VARCHAR2(10),
-profileImgName VARCHAR2(300)
+profileImgName VARCHAR2(300),
+rights VARCHAR2(5)
 )
 
 
@@ -25,3 +26,5 @@ commit
 SELECT * FROM member
 
 DELETE FROM member where id = 'lch5592'
+
+UPDATE member SET rights = 'admin' WHERE id = 'lch559'

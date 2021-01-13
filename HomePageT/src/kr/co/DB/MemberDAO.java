@@ -101,11 +101,12 @@ public class MemberDAO {
 				String address = rs.getString("address");
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
+				String rights = rs.getString("rights");
 				
-				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName);
+				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName , rights);
 				
 			}else {
-				dto = new MemberDTO(null, null, null, null, null, null, null, null);
+				dto = new MemberDTO(null, null, null, null, null, null, null, null ,null);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,7 +116,60 @@ public class MemberDAO {
 		return dto;
 	}
 	
+	private void delete(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM member WHERE id=?";
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(null, pstmt, conn);
+		}
+	}
 	
+	
+	
+	
+	
+	
+	private boolean checkRights(String id) {
+		boolean result = false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "SELECT (rights) FROM member WHERE id = ?";
+		ResultSet rs = null;
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String rights = rs.getString(1);
+				if(rights=="admin") {
+					result = true;
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		
+		return result;
+	}
 	
 	
 	 private void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {

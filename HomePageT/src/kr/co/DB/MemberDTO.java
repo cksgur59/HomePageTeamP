@@ -14,13 +14,14 @@ public class MemberDTO implements Serializable{
 	private String address;
 	private String gender;
 	private String profileImgName;
+	private String rights;
 	
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDTO(String id, String password, String name, String email, String phoneNumber, String address,
-			String gender, String profileImgName) {
+			String gender, String profileImgName, String rights) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -30,6 +31,7 @@ public class MemberDTO implements Serializable{
 		this.address = address;
 		this.gender = gender;
 		this.profileImgName = profileImgName;
+		this.rights = rights;
 	}
 
 	public String getId() {
@@ -96,6 +98,18 @@ public class MemberDTO implements Serializable{
 		this.profileImgName = profileImgName;
 	}
 
+	public String getRights() {
+		return rights;
+	}
+
+	public void setRights(String rights) {
+		this.rights = rights;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -125,11 +139,7 @@ public class MemberDTO implements Serializable{
 	public String toString() {
 		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email
 				+ ", phoneNumber=" + phoneNumber + ", address=" + address + ", gender=" + gender + ", profileImgName="
-				+ profileImgName + "]";
+				+ profileImgName + ", rights=" + rights + "]";
 	}
-	
-	
-	
-	
 	
 }
