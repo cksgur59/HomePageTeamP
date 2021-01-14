@@ -25,6 +25,7 @@ import kr.co.command.ReplyCommand;
 import kr.co.command.ReplyUICommand;
 import kr.co.command.SearchCommand;
 import kr.co.command.UpdateCommand;
+import kr.co.command.UpdateMemberCommand;
 import kr.co.command.UpdateUICommnad;
 
 
@@ -82,6 +83,8 @@ public class FrontController extends HttpServlet {
 			com = new LogoutCommand();
 		}else if (sp.equalsIgnoreCase("/adminPage.do")) {
 			com = new AdminPageCommand();
+		}else if (sp.equalsIgnoreCase("/updateMember.do")) {
+			com = new UpdateMemberCommand();
 		}
 		
 		
