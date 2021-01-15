@@ -8,75 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<<<<<<<< HEAD:HomePageT1/WebContent/updateMember.jsp
-=======
->>>>>>> 41aaaa2cf293fb0f770532752b8142244864ae5f
 <title>회원 정보 수정화면</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 ${dto.name }님의 정보 수정화면
-<<<<<<< HEAD
-========
-<title>관리자 페이지</title>
-<style type="text/css">
-.table{
-width: 1500px;
-height: 100px;
-border: 2px solid black;
-margin:10px;
-padding:5px;
-text-align: center;
-border-collapse: collapse;
-}
-th, td {
-    border: 1px solid #444444;
-    padding: 10px;
-  }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-
-	<h2>회원 목록</h2>
-	<hr>
-<div style="width: 1530px; height: 300px; overflow: auto; border: 2px solid black; margin: 5px; padding: 5px;">
-<table class="table">
-<thead>
-	<tr>
-	<th>PROFILEIMGNAME</th>
-	<th>NAME</th>
-	<th>GENDER</th>
-	<th>ID</th>
-	<th>PASSWORD</th>
-	<th>EMAIL</th>
-	<th>PHONENUMBER</th>
-	<th>ADDRESS</th>
-	<th>RIGHTS</th>
-	<th>정보수정</th>
-	</tr>
-</thead>
-<tbody class="tb">
-<c:forEach items="${list }" var = "dto">
-<tr>
-<td>${dto.profileImgName}</td>
-<td>${dto.name}</td>
-<td>${dto.gender}</td>
-<td>${dto.id}</td>
-<td>${dto.password}</td>
-<td>${dto.email}</td>
-<td>${dto.phoneNumber}</td>
-<td>${dto.address}</td>
-<td>${dto.rights}</td>
-<td onclick="location.href='updateMember.do?id=${dto.id}'"><button>수정</button></td>
-</tr>
-</c:forEach>
-</tbody>
-</table>
-</div>
->>>>>>>> 41aaaa2cf293fb0f770532752b8142244864ae5f:HomePageT/WebContent/adminPage.jsp
-=======
->>>>>>> 41aaaa2cf293fb0f770532752b8142244864ae5f
 </body>
 </html>
