@@ -82,7 +82,7 @@ public class MemberDAO {
 		MemberDTO dto = null;
 		Connection conn = null;
 	    PreparedStatement pstmt = null;
-	    String sql = "SELECT * FROM member where id=?";
+	    String sql = "SELECT * FROM member WHERE id = ?";
 	    ResultSet rs = null;
 	    
 	    try {

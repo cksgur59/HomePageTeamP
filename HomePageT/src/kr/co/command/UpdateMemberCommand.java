@@ -16,12 +16,10 @@ public class UpdateMemberCommand implements Command {
 			throws IOException, ServletException {
 		
 		String id = request.getParameter("id");
-		
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = dao.selectid(id);
 		
 		request.setAttribute("dto", dto);
-		
 		
 		return new CommandAction(false, "updateMember.jsp");
 	}
