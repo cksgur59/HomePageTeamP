@@ -30,7 +30,7 @@ th, td {
 
 	<h2>회원 목록</h2>
 	<hr>
-<div style="width: 1530px; height: 300px; overflow: auto;">
+<div style="width: 1530px; height: 300px; overflow: auto; border: 2px solid black; margin: 5px; padding: 5px;">
 <table class="table">
 <thead>
 	<tr>
@@ -58,8 +58,7 @@ th, td {
 <td>${dto.phoneNumber}</td>
 <td>${dto.address}</td>
 <td>${dto.rights}</td>
-<form><td><button type="submit" formaction="updateMember.do?id='${dto.id}'">수정</button></td></form>
-
+<td onclick="location.href='updateMember.do?id=${dto.id}'"><button>수정</button></td>
 </tr>
 </c:forEach>
 </tbody>

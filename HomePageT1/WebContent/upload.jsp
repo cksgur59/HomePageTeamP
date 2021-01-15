@@ -11,6 +11,11 @@
 <meta charset="UTF-8">
 <title>파일 업로드</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style type="text/css">
+	body{
+		background-color: #bcdefb;
+	}
+</style>
 </head>
 <body>
 <h1>업로드</h1>

@@ -20,6 +20,7 @@ import kr.co.command.LoginCommand;
 import kr.co.command.LogoutCommand;
 import kr.co.command.MainCommand;
 import kr.co.command.NewPostCommand;
+import kr.co.command.NewPostUICommand;
 import kr.co.command.ReadCommand;
 import kr.co.command.ReplyCommand;
 import kr.co.command.ReplyUICommand;
@@ -61,7 +62,9 @@ public class FrontController extends HttpServlet {
 			com = new LoginCommand();
 		}else if(sp.equalsIgnoreCase("/main.do")) {
 			com = new MainCommand();
-		}else if(sp.equalsIgnoreCase("newPost.do")) {
+		}else if(sp.equalsIgnoreCase("/newPostui.do")) {
+			com = new NewPostUICommand();	
+		}else if(sp.equalsIgnoreCase("/newPost.do")) {
 			com = new NewPostCommand();
 		}else if (sp.equalsIgnoreCase("/list.do")) {
 			com = new ListCommand();

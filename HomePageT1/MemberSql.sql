@@ -27,7 +27,7 @@ SELECT * FROM member
 
 DELETE FROM member where id = 'lch5592'
 
-UPDATE member SET rights = 'user' WHERE id = 'm012'
+UPDATE member SET rights = 'admin' WHERE id = 'm012'
 
 
 INSERT INTO member VALUES ('m012','123123','m012','m012@naver.com','01022674410','경기도','m','','user')

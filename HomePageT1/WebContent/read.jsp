@@ -11,14 +11,6 @@
 <meta charset="UTF-8">
 <title>글 자세히 보기 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<style>
-body {
-    background: #64BEFF;
-    font-size: 1em;
-    color: rgba(51,51,51,1);
-}
-
-</style>
 </head>
 <body>
 <h1>글 자세히 보기</h1>

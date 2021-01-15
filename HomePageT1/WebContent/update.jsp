@@ -12,11 +12,10 @@
 <title>게시판 글 수정</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<style>
-body {	
-	background-color: rgba(204, 255, 255, 1);
-}
-
+<style type="text/css">
+	body{
+		background-color: #bbdefb;
+	}
 </style>
 <body>
 <h1>게시판 글 수정</h1>
@@ -26,7 +25,7 @@ body {
 	제  목: <input name="title" value="${dto.title}"><br>
 	작성자: <input name="author" value="${dto.author}"><br>
 	내  용: <br>
-	<textarea rows="20" name="content">${dto.content}</textarea><br>
+	<textarea rows="70" cols="50" name="content">${dto.content}</textarea><br>
 	<input type="submit" value="수정">
 
 </form>
