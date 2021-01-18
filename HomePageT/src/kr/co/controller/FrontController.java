@@ -19,6 +19,7 @@ import kr.co.command.ListCommand;
 import kr.co.command.LoginCommand;
 import kr.co.command.LogoutCommand;
 import kr.co.command.MainCommand;
+import kr.co.command.MyPage;
 import kr.co.command.NewPost;
 import kr.co.command.ReadCommand;
 import kr.co.command.ReplyCommand;
@@ -85,6 +86,8 @@ public class FrontController extends HttpServlet {
 			com = new AdminPageCommand();
 		}else if (sp.equalsIgnoreCase("/updateMember.do")) {
 			com = new UpdateMemberCommand();
+		}else if (sp.equalsIgnoreCase("/mypage.do")) {
+			com = new MyPage();
 		}
 		
 		

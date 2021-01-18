@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-<a href="insertui.do">글작성</a>
+<a href="newPostui.do">글작성</a>
 
 <h1>공지사항</h1>
 
