@@ -9,23 +9,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>검색</title>
+<title>공지사항</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
 <style type="text/css">
 	body {
-    	background: yellow;
+    	background: #ffd700 ;
+	}
+	
+	.itsme {
+		font-weight: bolder;
+		color: blue;
+	}
+	
+	a {
+		text-decoration: none;
 	}
 	
 	table {
 		width: 100%;
-		border-collapse: collapse; 
+		border-collapse: collapse;
 	}
 	
 	tbody {		
 		text-align: center;
 	}
 	
-</style>	
+</style>
 </head>
 <body>
 <form action="newPostui.do">
@@ -35,36 +46,46 @@
 <form action="main.do">
 	<input type="submit" value="메인">
 </form>
-<h1>검색</h1>
+<h1>공지사항</h1>
 
 <table>
 	<thead>
 		<tr>
 			<th>글번호</th>
-			<th>작성자</th>
 			<th>제목</th>
+			<th>작성자</th>
 			<th>조회수</th>
 			<th>작성일</th>
-			<th>indent</th>
+			
 		</tr>
-	
 	</thead>
 	
 	<tbody>
-		<c:forEach items="${list}" var="dto">
+		<c:forEach items="${to.list}" var="dto">
 			<tr>
 				<td>${dto.num}</td>
+				<td>
+					<c:forEach begin="1" end="${dto.repindent}">
+						&nbsp;&nbsp;
+					</c:forEach>
+					
+					<a href="read.do?num=${dto.num}">
+						${dto.title}
+					</a>
+				</td>
 				<td>${dto.author}</td>
-				<td><a href="read.do?num=${dto.num}">${dto.title}</a></td>				
 				<td>${dto.readcnt}</td>
 				<td>${dto.writeday}</td>
-				<td>${dto.repindent}</td>				
-			</tr>	
-		
+			</tr>
+			
 		</c:forEach>
+	
 	</tbody>
 
 </table>
+<div>
+	<jsp:include page="page2.jsp"/>
+</div>
 
 <form action="search.do">
 <select name="searchoption">
@@ -75,7 +96,7 @@
 </select>
 <input name="searchkeyword">
 <input type="submit" value="검색">
+
 </form>
- 
 </body>
 </html>

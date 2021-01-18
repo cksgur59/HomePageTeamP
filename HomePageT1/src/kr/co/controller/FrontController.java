@@ -21,6 +21,8 @@ import kr.co.command.LogoutCommand;
 import kr.co.command.MainCommand;
 import kr.co.command.NewPostCommand;
 import kr.co.command.NewPostUICommand;
+import kr.co.command.NoticeCommand;
+import kr.co.command.QnACommand;
 import kr.co.command.ReadCommand;
 import kr.co.command.ReplyCommand;
 import kr.co.command.ReplyUICommand;
@@ -88,6 +90,10 @@ public class FrontController extends HttpServlet {
 			com = new AdminPageCommand();
 		}else if (sp.equalsIgnoreCase("/updateMember.do")) {
 			com = new UpdateMemberCommand();
+		}else if (sp.equalsIgnoreCase("/notice.do")) {
+			com = new NoticeCommand();
+		}else if (sp.equalsIgnoreCase("/qna.do")) {
+			com = new QnACommand();
 		}
 		
 		

@@ -42,9 +42,9 @@
 
 			<header>
 				<ul>
-					<li>공지사항</li>
-					<li>자유게시판</li>
-					<li>묻고답하기</li>
+					<li><a href="http://localhost:8089/HomePageT1/notice.do?curpage=1">공지사항</a></li>
+					<li><a href="http://localhost:8089/HomePageT1/list.do?curpage=1">자유게시판</a></li>
+					<li><a href="http://localhost:8089/HomePageT1/qna.do?curpage=1">묻고답하기</a></li>
 				</ul>
 			</header>
 

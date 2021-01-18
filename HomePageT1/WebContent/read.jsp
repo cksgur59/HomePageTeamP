@@ -11,6 +11,11 @@
 <meta charset="UTF-8">
 <title>글 자세히 보기 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style type="text/css">
+	body{
+		background-color: #ffb6c1;
+	}
+</style>
 </head>
 <body>
 <h1>글 자세히 보기</h1>
@@ -25,6 +30,6 @@
 <a href="replyui.do?num=${dto.num}">댓글</a>
 <a href="updateui.do?num=${dto.num}">수정</a>
 <a href="delete.do?num=${dto.num}">삭제</a>
-
+<a href="list.do">목록</a>
 </body>
 </html>

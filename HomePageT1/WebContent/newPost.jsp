@@ -11,6 +11,11 @@
 <title>글쓰기</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+<style type="text/css">
+	body{
+		background-color: #bbdefb;
+	}
+</style>
 <body>
 <h1>글을 작성해주세요</h1>
 
@@ -18,7 +23,7 @@
 글쓴이: <input name="author"><br>
 제  목: <input name="title"><br>
 내  용: <br>
-<textarea rows="20" name="content"></textarea>
+<textarea rows="70" cols="50" name="content"></textarea>
 <input type="submit" value="작성">
 </form>
 

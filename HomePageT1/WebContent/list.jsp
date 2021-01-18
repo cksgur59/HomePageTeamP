@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>자유게시판</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style type="text/css">
@@ -37,8 +37,14 @@
 </style>
 </head>
 <body>
-<a href="newPostui.do">글작성</a>
-<h1>공지사항</h1>
+<form action="newPostui.do">
+	<input type="submit" value="글작성">
+</form>
+<br>
+<form action="main.do">
+	<input type="submit" value="메인">
+</form>
+<h1>자유게시판</h1>
 
 <table>
 	<thead>
@@ -84,6 +90,7 @@
 	<option value="author">작성자</option>
 	<option value="title">제목</option>
 	<option value="content">내용</option>
+	<option value="title_content">제목+내용</option>
 </select>
 <input name="searchkeyword">
 <input type="submit" value="검색">
