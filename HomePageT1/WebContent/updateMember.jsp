@@ -8,24 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글쓰기</title>
+<title>회원 정보 수정화면</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<style type="text/css">
-	body{
-		background-color: #bbdefb;
-	}
-</style>
 <body>
-<h1>글을 작성해주세요</h1>
-
-<form action="newPost.do" method="post">
-글쓴이: <input name="author"><br>
-제  목: <input name="title"><br>
-내  용: <br>
-<textarea rows="70" cols="50" name="content"></textarea>
-<input type="submit" value="작성">
-</form>
-
+${dto.name }님의 정보 수정화면
 </body>
 </html>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.DB.NoticeDAO;
 import kr.co.DB.PageTO;
 
-public class ListCommand implements Command {
+public class NoticeCommand implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -26,7 +26,7 @@ public class ListCommand implements Command {
 		request.setAttribute("list", to.getList());
 		request.setAttribute("to", to);
 	
-		return new CommandAction(false, "list.jsp");
+		return new CommandAction(false, "notice.jsp");
 	}
-
+	
 }

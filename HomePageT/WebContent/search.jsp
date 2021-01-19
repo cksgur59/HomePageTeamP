@@ -28,8 +28,13 @@
 </style>	
 </head>
 <body>
-<a href="newPostui.do">글작성</a>
-
+<form action="newPostui.do">
+	<input type="submit" value="글작성">
+</form>
+<br>
+<form action="main.do">
+	<input type="submit" value="메인">
+</form>
 <h1>검색</h1>
 
 <table>
@@ -53,7 +58,7 @@
 				<td><a href="read.do?num=${dto.num}">${dto.title}</a></td>				
 				<td>${dto.readcnt}</td>
 				<td>${dto.writeday}</td>
-				<td>${dto.repindent}</td>
+				<td>${dto.repindent}</td>				
 			</tr>	
 		
 		</c:forEach>
@@ -66,6 +71,7 @@
 	<option value="author">작성자</option>
 	<option value="title">제목</option>
 	<option value="content">내용</option>
+	<option value="title_content">제목+내용</option>
 </select>
 <input name="searchkeyword">
 <input type="submit" value="검색">
