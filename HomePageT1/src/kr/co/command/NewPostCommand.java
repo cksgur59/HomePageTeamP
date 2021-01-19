@@ -23,7 +23,7 @@ public class NewPostCommand implements Command {
 		NoticeDAO dao = new NoticeDAO();
 		dao.newPost(dto);
 		
-		return new CommandAction(true, "list.do");
+		return new CommandAction(true, "notice.do");
 	}
 
 }

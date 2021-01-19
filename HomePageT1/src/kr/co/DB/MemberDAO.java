@@ -11,6 +11,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import kr.co.DB.MemberDTO;
+
 public class MemberDAO {
 
 	private DataSource dataFactory;
@@ -113,6 +115,34 @@ public class MemberDAO {
 	    return dto;
 	}
 	
+	public String selectmenu(String menu , String id) {
+		String result = null;
+		Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    String sql = "SELECT ? FROM member WHERE id = ?";
+	    ResultSet rs = null;
+	    
+	    try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+	    	pstmt.setString(1, menu);
+	    	pstmt.setString(2, id);
+	    	rs = pstmt.executeQuery();
+	    	
+	    	if(rs.next()) {
+	    		result = rs.getString(1);
+	    	}
+	    	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+	    return result;
+	}
+	
+	
+	
 	
 	public MemberDTO login(MemberDTO lgi) {
 		MemberDTO dto = null;
@@ -172,7 +202,26 @@ public class MemberDAO {
 		}
 	}
 	
-	
+	public void updateIMV(String id , String valv , String selectv) {
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE member SET name = ? WHERE id = ?";
+		System.out.println(sql);
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			/* pstmt.setString(1, selectv); */
+			pstmt.setString(1, valv);
+			pstmt.setString(2, id);
+			pstmt.executeUpdate();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(null, pstmt, conn);
+		}
+		
+	}
 	
 	
 	

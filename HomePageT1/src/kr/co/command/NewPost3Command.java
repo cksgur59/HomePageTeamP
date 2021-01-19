@@ -7,26 +7,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.DB.NoticeDAO;
-import kr.co.DB.PageTO;
+import kr.co.DB.NoticeDTO;
 
-public class QnACommand implements Command {
+public class NewPost3Command implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String scp = request.getParameter("curpage");
-		int curpage = 1;
-	
-		if (scp != null) {
-			curpage = Integer.parseInt(scp);
-		}
-	
+		
+		String author = request.getParameter("author");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		NoticeDTO dto = new NoticeDTO(-1, author, title, content, null, 0, 0, 0, 0);
 		NoticeDAO dao = new NoticeDAO();
-		PageTO to = dao.page3(curpage);
-	
-		request.setAttribute("list", to.getList());
-		request.setAttribute("to", to);
-	
-		return new CommandAction(false, "qna.jsp");
+		dao.newPost(dto);
+		
+		return new CommandAction(true, "qna.do");
 	}
 
 }

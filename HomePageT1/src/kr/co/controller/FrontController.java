@@ -19,13 +19,20 @@ import kr.co.command.ListCommand;
 import kr.co.command.LoginCommand;
 import kr.co.command.LogoutCommand;
 import kr.co.command.MainCommand;
+import kr.co.command.MyPage;
+import kr.co.command.NewPost2Command;
+import kr.co.command.NewPost3Command;
 import kr.co.command.NewPostCommand;
+import kr.co.command.NewPostUI2Command;
+import kr.co.command.NewPostUI3Command;
 import kr.co.command.NewPostUICommand;
 import kr.co.command.NoticeCommand;
 import kr.co.command.QnACommand;
 import kr.co.command.ReadCommand;
 import kr.co.command.ReplyCommand;
 import kr.co.command.ReplyUICommand;
+import kr.co.command.Search2Command;
+import kr.co.command.Search3Command;
 import kr.co.command.SearchCommand;
 import kr.co.command.UpdateCommand;
 import kr.co.command.UpdateMemberCommand;
@@ -94,6 +101,20 @@ public class FrontController extends HttpServlet {
 			com = new NoticeCommand();
 		}else if (sp.equalsIgnoreCase("/qna.do")) {
 			com = new QnACommand();
+		}else if (sp.equalsIgnoreCase("/mypage.do")) {
+			com = new MyPage();
+		}else if (sp.equalsIgnoreCase("/newPostui2.do")) {
+			com = new NewPostUI2Command();
+		}else if (sp.equalsIgnoreCase("/newPost2.do")) {
+			com = new NewPost2Command();
+		}else if (sp.equalsIgnoreCase("/newPostui3.do")) {
+			com = new NewPostUI3Command();
+		}else if (sp.equalsIgnoreCase("/newPost3.do")) {
+			com = new NewPost3Command();
+		}else if (sp.equalsIgnoreCase("/search2.do")) {
+			com = new Search2Command();
+		}else if (sp.equalsIgnoreCase("/search3.do")) {
+			com = new Search3Command();
 		}
 		
 		

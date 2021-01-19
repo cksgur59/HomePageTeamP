@@ -21,7 +21,7 @@ public class ListCommand implements Command {
 		}
 	
 		NoticeDAO dao = new NoticeDAO();
-		PageTO to = dao.page(curpage);
+		PageTO to = dao.page2(curpage);
 	
 		request.setAttribute("list", to.getList());
 		request.setAttribute("to", to);

@@ -24,7 +24,7 @@ public class ReplyCommand implements Command {
 		
 		new NoticeDAO().reply(orinum, repdto);
 		
-		return new CommandAction(true, "list.do");
+		return new CommandAction(true, "notice.do");
 	}
 
 }

@@ -23,14 +23,29 @@
 
 	<script type="text/javascript">
       	function logout_confirm(){
-      		var answer=confirm("정말 로그아웃 하시겠습니까?");
+      		var answer = confirm("정말 로그아웃 하시겠습니까?");
       		
-      		if(answer==true){
+      		if (answer == true){
       			location.href = "logout.do";
       		}
       	}
       	
       </script>
+      
+    <c:if test="${login != null}">
+		<button><a href="mypage.do">마이페이지(${login.id})</a></button>
+	</c:if>
+	
+      <!-- 임시 관리자 페이지 이동 시작-->
+	<c:if test="${login.rights =='admin'}">
+		<button onclick="go_adminPage()">관리자 페이지</button>
+	</c:if>
+	<script type="text/javascript">
+function go_adminPage(){
+location.href = "adminPage.do";
+}
+</script>
+	<!-- 임시 관리자 페이지 이동 끝 -->
 	<div id="board">
 
 		<div id="wapper">
@@ -42,9 +57,13 @@
 
 			<header>
 				<ul>
-					<li><a href="http://localhost:8089/HomePageT1/notice.do?curpage=1">공지사항</a></li>
-					<li><a href="http://localhost:8089/HomePageT1/list.do?curpage=1">자유게시판</a></li>
-					<li><a href="http://localhost:8089/HomePageT1/qna.do?curpage=1">묻고답하기</a></li>
+					<li><a href="notice.do?curpage=1">공지사항</a></li>
+					<li>업데이트</li>
+					<li><a href="list.do?curpage=1">자유게시판</a></li>
+					<li><a href="qna.do?curpage=1">묻고답하기</a></li>
+					<li>스크린샷</li>
+					<li>자료실</li>
+					<li>고객센터</li>
 				</ul>
 			</header>
 
@@ -67,7 +86,7 @@
 				<!-- 컨텐츠(최신 게시글 노출) -->
 				<!-- section -->
 				<section>
-					<p>최신글</p>
+					<p>공지사항</p>
 					<!-- article -->
 					<article>
 						<li>최신글을 넣어주세요.1</li>
@@ -79,14 +98,24 @@
 
 				<!-- aside 우측사이드-->
 				<aside>
-					<p>미정</p>
+					<p>우측사이드</p>
 					<ul>
-						<li>미정</li>
-						<li>미정</li>
-						<li>미정</li>
+						<li>우측사이드1</li>
+						<li>우측사이드2</li>
+						<li>우측사이드3</li>
 					</ul>
 				</aside>
 			</div>
+			
+				<section id="free">
+					<p>자유게시판</p>
+					<!-- article -->
+					<article>
+						<li>최신글을 넣어주세요.1</li>
+						<li>최신글을 넣어주세요.2</li>
+						<li>최신글을 넣어주세요.3</li>
+					</article>
+				</section>
 
 			<!-- footer -->
 			<footer>
@@ -101,16 +130,7 @@
 		</div>
 	</div>
 
-	<!-- 임시 관리자 페이지 이동 시작-->
-	<c:if test="${login.rights =='admin'}">
-		<button onclick="go_adminPage()">관리자 페이지</button>
-	</c:if>
-	<script type="text/javascript">
-function go_adminPage(){
-location.href = "adminPage.do";
-}
-</script>
-	<!-- 임시 관리자 페이지 이동 끝 -->
+
 
 </body>
 </html>
