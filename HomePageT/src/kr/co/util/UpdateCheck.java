@@ -33,23 +33,22 @@ public class UpdateCheck extends HttpServlet {
 		String selectv = request.getParameter("selectv");
 		String valv = request.getParameter("valv");
 		String id = request.getParameter("id");
-		
-		System.out.println(selectv);
-		System.out.println(valv);
-		System.out.println(id);
+
 		String updateCheckMsg = null;
 		String isok = "성공";
 		
 		MemberDAO dao = new MemberDAO();
 		dao.updateIMV(id, valv, selectv);
-		if(dao.selectmenu(selectv, id)==valv) {
+		
+		String selctmenu = dao.selectmenu(selectv, id);
+		
+		if(selctmenu.equals(valv)) {
 			updateCheckMsg = isok; 
 		}else {
 			updateCheckMsg = "실패";
 		}
 		request.setAttribute("isok", isok);
 		request.setAttribute("updateCheckMsg", updateCheckMsg);
-		
 		request.getRequestDispatcher("updateCheckMsg.jsp").forward(request, response);
 		
 		

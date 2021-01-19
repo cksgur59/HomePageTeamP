@@ -38,4 +38,4 @@ INSERT INTO member VALUES ('m016','123123','m016','m016@naver.com','01022674414'
 INSERT INTO member VALUES ('m017','123123','m017','m017@naver.com','01022674415','경기도','m','','user')
 
 UPDATE member SET name = '이정칠' WHERE id = 'm001'
-
+SELECT name FROM member WHERE id = 'm001'

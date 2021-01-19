@@ -119,18 +119,18 @@ public class MemberDAO {
 		String result = null;
 		Connection conn = null;
 	    PreparedStatement pstmt = null;
-	    String sql = "SELECT ? FROM member WHERE id = ?";
+	    String sql = "SELECT "+menu+" FROM member WHERE id = ?";
 	    ResultSet rs = null;
-	    
 	    try {
 			conn = dataFactory.getConnection();
 			pstmt = conn.prepareStatement(sql);
-	    	pstmt.setString(1, menu);
-	    	pstmt.setString(2, id);
+	    	pstmt.setString(1, id);
+	    	
 	    	rs = pstmt.executeQuery();
 	    	
 	    	if(rs.next()) {
-	    		result = rs.getString(1);
+	    		String msg = rs.getString(1);
+				result = msg;
 	    	}
 	    	
 		} catch (Exception e) {
@@ -205,12 +205,10 @@ public class MemberDAO {
 	public void updateIMV(String id , String valv , String selectv) {
 		Connection conn = null; 
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET name = ? WHERE id = ?";
-		System.out.println(sql);
+		String sql = "UPDATE member SET "+selectv+" = ? WHERE id = ?";
 		try {
 			conn = dataFactory.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			/* pstmt.setString(1, selectv); */
 			pstmt.setString(1, valv);
 			pstmt.setString(2, id);
 			pstmt.executeUpdate();
