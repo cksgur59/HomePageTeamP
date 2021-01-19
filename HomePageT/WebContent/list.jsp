@@ -37,6 +37,7 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 <form action="newPostui.do">
 	<input type="submit" value="글작성">
 </form>
@@ -45,6 +46,11 @@
 	<input type="submit" value="메인">
 </form>
 <h1>자유게시판</h1>
+=======
+<a href="newPostui.do">글작성</a>
+
+<h1>공지사항</h1>
+>>>>>>> 6a7c1ae5e1933205c1180dff36764d38c2b52851
 
 <table>
 	<thead>
