@@ -62,16 +62,16 @@ ${dto.name}님의 정보 수정화면
 		<td style="height: 60px;">${dto.address}</td>
 		<td>${dto.rights}</td>
 	</tr>
-	<tr>
-		<th>수정</th>
-		<td><button name = "profileImgName">수정</button></td>
+	<tr style="width: 96px;">
+		<th style="height: 30px;">수정</th>
+		<td style="height: 130px;"><button name = "profileImgName">수정</button></td>
 		<td><button name = "name">수정</button></td>
 		<td><button name = "gender">수정</button></td>
 		<td><button name = "id">수정</button></td>
 		<td><button name = "password">수정</button></td>
 		<td><button name = "email">수정</button></td>
 		<td><button name = "phoneNumber">수정</button></td>
-		<td><button name = "address">수정</button></td>
+		<td style="height: 60px;"><button name = "address">수정</button></td>
 	</tr>
 
 
@@ -118,8 +118,36 @@ $(document).ready(function(){
 		checking(selectv, valv , id);
 	});
  
- 
- 
+ $("button[name='id']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 ID를 입력해 주세요.");
+		selectv = "id";
+		checkingid(selectv, valv , id);
+	});
+ $("button[name='password']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 password를 입력해 주세요.");
+		selectv = "password";
+		checking(selectv, valv , id);
+	});
+ $("button[name='email']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 email를 입력해 주세요.");
+		selectv = "email";
+		checking(selectv, valv , id);
+	});
+ $("button[name='phoneNumber']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 핸드폰 번호를 입력해 주세요.");
+		selectv = "phoneNumber";
+		checking(selectv, valv , id);
+	});
+ $("button[name='address']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 주소를 입력해 주세요.");
+		selectv = "address";
+		checking(selectv, valv , id);
+	});
  
 function checking(selectv, valv , id ) {
 	$.ajax({
@@ -145,7 +173,36 @@ function checking(selectv, valv , id ) {
         },
 	});
 }
+function checkingid(selectv, valv , id ) {
+	$.ajax({
+		type: 'get',
+        url: 'UpdateCheck',
+        data: {
+        	selectv : selectv,
+        	valv : valv,
+        	id : id
+        },
+        dataType: 'text',
+        success: function(updateCheckMsg) {
+        	console.log(updateCheckMsg);
+        	if(updateCheckMsg=="성공"){
+        	alert(updateCheckMsg);
+        	idchange(valv);
+        	}
+        },
+        
+        error: function(request, status, error) {
+           console.log(error);
+           alert(updateCheckMsg);
+        },
+	});
+}
 });
+function idchange(valv){
+	console.log(valv);
+	location.href = "updateMember.do?id="+valv;
+}
+
 </script>
 
 </body>
