@@ -23,8 +23,9 @@ public class InsertCommand implements Command {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String address = request.getParameter("address");
 		
-		MemberDTO dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, null , "user");
 		MemberDAO dao = new MemberDAO();
+		int num = dao.scannum();
+		MemberDTO dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, null , "user" , num);
 		dao.insertMember(dto);
 		
 		System.out.println(dto);

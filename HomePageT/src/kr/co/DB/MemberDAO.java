@@ -28,6 +28,30 @@ public class MemberDAO {
 		}
 	}
 	
+	public int scannum() {
+		int num =0;
+		Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    String sql = "SELECT ROWNUM rnum,num FROM member";
+	    ResultSet rs = null;
+	    
+	    try {
+			conn=dataFactory.getConnection();
+			pstmt= conn.prepareStatement(sql);
+	    	rs=pstmt.executeQuery();
+	    	
+	    	while(rs.next()) {
+	    		num = rs.getInt("rnum");
+	    	}
+	    	num =num+1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+	    return num;
+	}
+	
 	public void insertMember(MemberDTO dto) {
 		 Connection conn = null;
 	      PreparedStatement pstmt = null;
@@ -104,8 +128,9 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
+				int num = rs.getInt("num");
 				
-				dto = new MemberDTO(id1, password, name, email, phoneNumber, address, gender, profileImgName, rights);
+				dto = new MemberDTO(id1, password, name, email, phoneNumber, address, gender, profileImgName, rights,num);
 	    	}
 	    	
 		} catch (Exception e) {
@@ -171,11 +196,12 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
+				int num = rs.getInt("num");
 				
-				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName , rights);
+				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName , rights,num);
 				
 			}else {
-				dto = new MemberDTO(null, null, null, null, null, null, null, null ,null);
+				dto = new MemberDTO(null, null, null, null, null, null, null, null ,null,0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -291,7 +317,8 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
-				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName, rights);
+				int num = rs.getInt("num");
+				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName, rights,num);
 				list.add(dto);
 			}
 			
