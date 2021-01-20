@@ -37,5 +37,9 @@ INSERT INTO member VALUES ('m015','123123','m015','m015@naver.com','01022674413'
 INSERT INTO member VALUES ('m016','123123','m016','m016@naver.com','01022674414','경기도','m','','user')
 INSERT INTO member VALUES ('m017','123123','m017','m017@naver.com','01022674415','경기도','m','','user')
 
+<<<<<<< HEAD:HomePageT/MemberSql.sql
 UPDATE member SET name = '이정칠' WHERE id = 'm001'
 SELECT name FROM member WHERE id = 'm001'
+=======
+UPDATE member SET name = '이정칠' WHERE id = 'm001'
+>>>>>>> 622429231e1940fda33bab1f04af7f45cc6892c4:HomePageT1/MemberSql.sql

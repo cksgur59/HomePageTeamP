@@ -37,8 +37,13 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD:HomePageT/WebContent/list.jsp
 <<<<<<< HEAD
 <form action="newPostui.do">
+=======
+
+<form action="newPostui2.do">
+>>>>>>> 622429231e1940fda33bab1f04af7f45cc6892c4:HomePageT1/WebContent/list.jsp
 	<input type="submit" value="글작성">
 </form>
 <br>
@@ -88,10 +93,10 @@
 
 </table>
 <div>
-	<jsp:include page="page.jsp"/>
+	<jsp:include page="page2.jsp"/>
 </div>
 
-<form action="search.do">
+<form action="search2.do">
 <select name="searchoption">
 	<option value="author">작성자</option>
 	<option value="title">제목</option>

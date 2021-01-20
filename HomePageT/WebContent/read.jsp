@@ -30,6 +30,6 @@
 <a href="replyui.do?num=${dto.num}">댓글</a>
 <a href="updateui.do?num=${dto.num}">수정</a>
 <a href="delete.do?num=${dto.num}">삭제</a>
-<a href="list.do">목록</a>
+<a href="notice.do">목록</a>
 </body>
 </html>
