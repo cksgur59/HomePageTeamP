@@ -13,8 +13,8 @@
     	<a href="list.do?curpage=${to.curpage - 1}">&lt;</a>
     </c:if>	
     
-    <c:forEach var="i" end="${to.stoplinenum}" begin="${to.beginlinenum}">
-    	<a class="${to.curpage == i?'itsme':''}" href="list.do?curpage=${i}"> ${i} </a>
+    <c:forEach var="j" end="${to.stoplinenum}" begin="${to.beginlinenum}">
+    	<a class="${to.curpage == j?'itsme':''}" href="list.do?curpage=${j}"> ${j} </a>
     </c:forEach>
     
     <c:if test="${to.curpage < to.totalpage}">

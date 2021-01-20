@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.DB.NoticeDAO;
+import kr.co.DB.QNADAO;
 import kr.co.DB.NoticeDTO;
 
 public class NewPost3Command implements Command {
@@ -19,8 +19,8 @@ public class NewPost3Command implements Command {
 		String content = request.getParameter("content");
 		
 		NoticeDTO dto = new NoticeDTO(-1, author, title, content, null, 0, 0, 0, 0);
-		NoticeDAO dao = new NoticeDAO();
-		dao.newPost(dto);
+		QNADAO dao = new QNADAO();
+		dao.newPost3(dto);
 		
 		return new CommandAction(true, "qna.do");
 	}

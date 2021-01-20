@@ -645,6 +645,5 @@ public class NoticeDAO {
 		
 		return list;
 	}
-	
 
-}
+}	

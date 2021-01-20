@@ -68,7 +68,7 @@
 						&nbsp;&nbsp;
 					</c:forEach>
 					
-					<a href="read.do?num=${dto.num}">
+					<a href="read2.do?num=${dto.num}">
 						${dto.title}
 					</a>
 				</td>

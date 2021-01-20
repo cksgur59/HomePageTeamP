@@ -1,3 +1,4 @@
+
 package kr.co.DB;
 
 import java.sql.Connection;
@@ -25,6 +26,30 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public int scannum() {
+		int num =0;
+		Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    String sql = "SELECT ROWNUM rnum,num FROM member";
+	    ResultSet rs = null;
+	    
+	    try {
+			conn=dataFactory.getConnection();
+			pstmt= conn.prepareStatement(sql);
+	    	rs=pstmt.executeQuery();
+	    	
+	    	while(rs.next()) {
+	    		num = rs.getInt("rnum");
+	    	}
+	    	num =num+1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+	    return num;
 	}
 	
 	public void insertMember(MemberDTO dto) {
@@ -103,8 +128,9 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
+				int num = rs.getInt("num");
 				
-				dto = new MemberDTO(id1, password, name, email, phoneNumber, address, gender, profileImgName, rights);
+				dto = new MemberDTO(id1, password, name, email, phoneNumber, address, gender, profileImgName, rights,num);
 	    	}
 	    	
 		} catch (Exception e) {
@@ -119,18 +145,18 @@ public class MemberDAO {
 		String result = null;
 		Connection conn = null;
 	    PreparedStatement pstmt = null;
-	    String sql = "SELECT ? FROM member WHERE id = ?";
+	    String sql = "SELECT "+menu+" FROM member WHERE id = ?";
 	    ResultSet rs = null;
-	    
 	    try {
 			conn = dataFactory.getConnection();
 			pstmt = conn.prepareStatement(sql);
-	    	pstmt.setString(1, menu);
-	    	pstmt.setString(2, id);
+	    	pstmt.setString(1, id);
+	    	
 	    	rs = pstmt.executeQuery();
 	    	
 	    	if(rs.next()) {
-	    		result = rs.getString(1);
+	    		String msg = rs.getString(1);
+				result = msg;
 	    	}
 	    	
 		} catch (Exception e) {
@@ -170,11 +196,12 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
+				int num = rs.getInt("num");
 				
-				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName , rights);
+				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName , rights,num);
 				
 			}else {
-				dto = new MemberDTO(null, null, null, null, null, null, null, null ,null);
+				dto = new MemberDTO(null, null, null, null, null, null, null, null ,null,0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -205,12 +232,10 @@ public class MemberDAO {
 	public void updateIMV(String id , String valv , String selectv) {
 		Connection conn = null; 
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE member SET name = ? WHERE id = ?";
-		System.out.println(sql);
+		String sql = "UPDATE member SET "+selectv+" = ? WHERE id = ?";
 		try {
 			conn = dataFactory.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			/* pstmt.setString(1, selectv); */
 			pstmt.setString(1, valv);
 			pstmt.setString(2, id);
 			pstmt.executeUpdate();
@@ -292,7 +317,8 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
-				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName, rights);
+				int num = rs.getInt("num");
+				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName, rights,num);
 				list.add(dto);
 			}
 			
