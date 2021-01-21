@@ -39,9 +39,12 @@
 </style>
 </head>
 <body>
+
+<c:if test="${login.rights =='admin'}">
 <form action="newPostui.do">
 	<input type="submit" value="글작성">
 </form>
+</c:if>
 <br>
 <form action="main.do">
 	<input type="submit" value="메인">

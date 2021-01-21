@@ -15,14 +15,13 @@ public class MemberDTO implements Serializable{
 	private String gender;
 	private String profileImgName;
 	private String rights;
-	private int num;
 	
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDTO(String id, String password, String name, String email, String phoneNumber, String address,
-			String gender, String profileImgName, String rights, int num) {
+			String gender, String profileImgName, String rights) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -33,7 +32,6 @@ public class MemberDTO implements Serializable{
 		this.gender = gender;
 		this.profileImgName = profileImgName;
 		this.rights = rights;
-		this.num = num;
 	}
 
 	public String getId() {
@@ -108,14 +106,6 @@ public class MemberDTO implements Serializable{
 		this.rights = rights;
 	}
 
-	public int getNum() {
-		return num;
-	}
-
-	public void setNum(int num) {
-		this.num = num;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -124,7 +114,7 @@ public class MemberDTO implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + num;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -137,7 +127,10 @@ public class MemberDTO implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		MemberDTO other = (MemberDTO) obj;
-		if (num != other.num)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
@@ -146,9 +139,7 @@ public class MemberDTO implements Serializable{
 	public String toString() {
 		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email
 				+ ", phoneNumber=" + phoneNumber + ", address=" + address + ", gender=" + gender + ", profileImgName="
-				+ profileImgName + ", rights=" + rights + ", num=" + num + "]";
+				+ profileImgName + ", rights=" + rights + "]";
 	}
-	
-	
 	
 }

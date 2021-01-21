@@ -9,25 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.DB.NoticeDAO;
 import kr.co.DB.NoticeDTO;
 
-public class ReplyCommand implements Command {
+public class FreeNewPostCommand implements Command {
 
 	@Override
-	public CommandAction execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String snum = request.getParameter("num");
-		int orinum = Integer.parseInt(snum);
+	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		
 		String author = request.getParameter("author");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
+		NoticeDTO dto = new NoticeDTO(-1, 2, author, title, content, null, 0, 0, 0, 0);
 		NoticeDAO dao = new NoticeDAO();
-		
-		NoticeDTO repdto = new NoticeDTO(-1,0, author, title, content, null, -1, -1, -1, -1);
-		
-		new NoticeDAO().reply(orinum, repdto);
+		dao.newPost(dto,2);
 		
 		return new CommandAction(true, "freenotice.do");
 	}
 
 }
-

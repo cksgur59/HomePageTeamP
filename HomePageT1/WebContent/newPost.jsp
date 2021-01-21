@@ -17,10 +17,10 @@
 	}
 </style>
 <body>
-<h1>글을 작성해주세요</h1>
+<h1>공지사항 작성</h1>
 
 <form action="newPost.do" method="post">
-글쓴이: <input name="author"><br>
+글쓴이: <input type="hidden" name="author" value="${login.id}">${login.id} <br>
 제  목: <input name="title"><br>
 내  용: <br>
 <textarea rows="70" cols="50" name="content"></textarea>

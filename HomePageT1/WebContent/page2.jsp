@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -23,4 +24,5 @@
     
     <c:if test="${to.totalpage > to.stoplinenum}">
     	<a href="list.do?curpage=${to.beginlinenum + to.perline}">&raquo;</a>
-    </c:if>	
+
+    </c:if>

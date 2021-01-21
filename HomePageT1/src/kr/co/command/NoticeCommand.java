@@ -21,7 +21,7 @@ public class NoticeCommand implements Command {
 		}
 	
 		NoticeDAO dao = new NoticeDAO();
-		PageTO to = dao.page(curpage);
+		PageTO to = dao.page(curpage,1);
 	
 		request.setAttribute("list", to.getList());
 		request.setAttribute("to", to);
@@ -30,3 +30,4 @@ public class NoticeCommand implements Command {
 	}
 	
 }
+

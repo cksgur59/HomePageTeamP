@@ -23,7 +23,7 @@
 <form action="update.do" method="post">
 	글번호: <input name="num" value="${dto.num}" readonly><br>
 	제  목: <input name="title" value="${dto.title}"><br>
-	작성자: <input name="author" value="${dto.author}"><br>
+	작성자: <input type="hidden" name="author" value="${login.id}">${login.id}<br>
 	내  용: <br>
 	<textarea rows="70" cols="50" name="content">${dto.content}</textarea><br>
 	<input type="submit" value="수정">

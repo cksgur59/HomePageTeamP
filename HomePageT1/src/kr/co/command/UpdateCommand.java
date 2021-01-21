@@ -20,7 +20,7 @@ public class UpdateCommand implements Command {
 		String title = request.getParameter("title");	
 		String content = request.getParameter("content");
 		
-		NoticeDTO dto = new NoticeDTO(num, author, title, content, null, -1, -1, -1, -1);
+		NoticeDTO dto = new NoticeDTO(num,0, author, title, content, null, -1, -1, -1, -1);
 		
 		new NoticeDAO().update(dto);
 		

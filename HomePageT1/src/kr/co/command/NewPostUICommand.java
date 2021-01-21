@@ -1,10 +1,14 @@
 package kr.co.command;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import kr.co.DB.MemberDAO;
+import kr.co.DB.MemberDTO;
 
 public class NewPostUICommand implements Command {
 
@@ -12,7 +16,14 @@ public class NewPostUICommand implements Command {
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-		return new CommandAction(true, "newPost.jsp");
+		MemberDAO dao = new MemberDAO();
+		List<MemberDTO> list = dao.list();
+		
+		request.setAttribute("list", list);
+		
+		
+		
+		return new CommandAction(false, "newPost.jsp");
 	}
 
 }

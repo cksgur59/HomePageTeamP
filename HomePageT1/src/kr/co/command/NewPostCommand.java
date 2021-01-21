@@ -19,9 +19,9 @@ public class NewPostCommand implements Command {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		NoticeDTO dto = new NoticeDTO(-1, author, title, content, null, 0, 0, 0, 0);
+		NoticeDTO dto = new NoticeDTO(-1, 1, author, title, content, null, 0, 0, 0, 0);
 		NoticeDAO dao = new NoticeDAO();
-		dao.newPost(dto);
+		dao.newPost(dto,1);
 		
 		return new CommandAction(true, "notice.do");
 	}
