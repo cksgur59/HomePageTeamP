@@ -15,14 +15,14 @@ public class MemberDTO implements Serializable{
 	private String gender;
 	private String profileImgName;
 	private String rights;
-	private int num;
+	private String num;
 	
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDTO(String id, String password, String name, String email, String phoneNumber, String address,
-			String gender, String profileImgName, String rights, int num) {
+			String gender, String profileImgName, String rights, String num) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -108,11 +108,11 @@ public class MemberDTO implements Serializable{
 		this.rights = rights;
 	}
 
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
 
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 
@@ -121,10 +121,17 @@ public class MemberDTO implements Serializable{
 	}
 
 	@Override
+	public String toString() {
+		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + ", address=" + address + ", gender=" + gender + ", profileImgName="
+				+ profileImgName + ", rights=" + rights + ", num=" + num + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + num;
+		result = prime * result + ((num == null) ? 0 : num.hashCode());
 		return result;
 	}
 
@@ -137,16 +144,12 @@ public class MemberDTO implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		MemberDTO other = (MemberDTO) obj;
-		if (num != other.num)
+		if (num == null) {
+			if (other.num != null)
+				return false;
+		} else if (!num.equals(other.num))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", address=" + address + ", gender=" + gender + ", profileImgName="
-				+ profileImgName + ", rights=" + rights + ", num=" + num + "]";
 	}
 	
 	
