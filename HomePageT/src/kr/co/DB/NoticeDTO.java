@@ -9,6 +9,7 @@ public class NoticeDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int num;
+	private int menu;
 	private String author;
     private String title;
 	private String content;
@@ -22,9 +23,11 @@ public class NoticeDTO implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NoticeDTO(int num, String author, String title, String content, String writeday, int readcnt, int reproot, int repstep, int repindent) {
+	public NoticeDTO(int num, int menu, String author, String title, String content, String writeday, int readcnt,
+			int reproot, int repstep, int repindent) {
 		super();
 		this.num = num;
+		this.menu = menu;
 		this.author = author;
 		this.title = title;
 		this.content = content;
@@ -41,6 +44,14 @@ public class NoticeDTO implements Serializable {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	public int getMenu() {
+		return menu;
+	}
+
+	public void setMenu(int menu) {
+		this.menu = menu;
 	}
 
 	public String getAuthor() {
@@ -132,5 +143,14 @@ public class NoticeDTO implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "NoticeDTO [num=" + num + ", menu=" + menu + ", author=" + author + ", title=" + title + ", content="
+				+ content + ", writeday=" + writeday + ", readcnt=" + readcnt + ", reproot=" + reproot + ", repstep="
+				+ repstep + ", repindent=" + repindent + "]";
+	}
+	
+	
 	
 }

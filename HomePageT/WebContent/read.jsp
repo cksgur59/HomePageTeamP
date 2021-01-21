@@ -26,10 +26,18 @@
 조회수: ${dto.readcnt}<br>
 내  용: <br>
 <p>${dto.content}</p>
-
+<c:if test="${dto.menu != 1}">
 <a href="replyui.do?num=${dto.num}">댓글</a>
+</c:if>
+<c:if test="${login.rights == 'admin' }">
 <a href="updateui.do?num=${dto.num}">수정</a>
 <a href="delete.do?num=${dto.num}">삭제</a>
+</c:if>
+<c:if test="${dto.menu == 1 }">
 <a href="notice.do">목록</a>
+</c:if>
+<c:if test="${dto.menu == 2 }">
+<a href="freenotice.do">목록</a>
+</c:if>
 </body>
 </html>

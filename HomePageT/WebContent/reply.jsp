@@ -18,11 +18,11 @@
 </style>
 </head>
 <body>
-<h1>${param.num}의 댓글</h1>
+<h1>${login.id}의 댓글</h1>
 
 	<form action="reply.do" method="post">
 		<input type="hidden" name="num" value="${param.num}">
-		글쓴이: <input name="author"><br>
+		글쓴이: <input type="hidden" name="author" value="${login.id}">${login.id}<br>
 		제  목: <input name="title"><br>
 		내  용: <br>
 		<textarea rows="70" cols="50" name="content"></textarea>

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>자유게시판</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -40,16 +40,15 @@
 </head>
 <body>
 
-<c:if test="${login.rights =='admin'}">
-<form action="newPostui.do">
+
+<form action="freenewPostui.do">
 	<input type="submit" value="글작성">
 </form>
-</c:if>
 <br>
 <form action="main.do">
 	<input type="submit" value="메인">
 </form>
-<h1>공지사항</h1>
+<h1>자유게시판</h1>
 
 <table>
 	<thead>

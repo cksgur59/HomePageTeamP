@@ -12,14 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.command.AdminPageCommand;
 import kr.co.command.Command;
 import kr.co.command.CommandAction;
-import kr.co.command.Delete2Command;
-import kr.co.command.Delete3Command;
 import kr.co.command.DeleteCommand;
-import kr.co.command.FileDownloadCommand;
+import kr.co.command.FreeNewPostCommand;
+import kr.co.command.FreeNewPostUICommand;
+import kr.co.command.FreeNotice;
 import kr.co.command.InsertCommand;
 import kr.co.command.InsertUICommand;
-import kr.co.command.List2Command;
-import kr.co.command.List3Command;
 import kr.co.command.ListCommand;
 import kr.co.command.LoginCommand;
 import kr.co.command.LogoutCommand;
@@ -28,29 +26,13 @@ import kr.co.command.NewPostCommand;
 import kr.co.command.NewPostUICommand;
 import kr.co.command.NoticeCommand;
 import kr.co.command.QnACommand;
-<<<<<<< HEAD:HomePageT/src/kr/co/controller/FrontController.java
-
 import kr.co.command.MyPage;
-
-
-=======
-import kr.co.command.Read2Command;
-import kr.co.command.Read3Command;
->>>>>>> 77aedcf6caec09aa9991552fb5ba545281cf1a19:HomePageT1/src/kr/co/controller/FrontController.java
 import kr.co.command.ReadCommand;
-import kr.co.command.Reply2Command;
-import kr.co.command.Reply3Command;
 import kr.co.command.ReplyCommand;
-import kr.co.command.ReplyUI2Command;
-import kr.co.command.ReplyUI3Command;
 import kr.co.command.ReplyUICommand;
 import kr.co.command.SearchCommand;
-import kr.co.command.Update2Command;
-import kr.co.command.Update3Command;
 import kr.co.command.UpdateCommand;
 import kr.co.command.UpdateMemberCommand;
-import kr.co.command.UpdateUI2Command;
-import kr.co.command.UpdateUI3Command;
 import kr.co.command.UpdateUICommnad;
 
 
@@ -118,54 +100,14 @@ public class FrontController extends HttpServlet {
 			com = new QnACommand();
 		}else if (sp.equalsIgnoreCase("/mypage.do")) {
 			com = new MyPage();
-<<<<<<< HEAD:HomePageT/src/kr/co/controller/FrontController.java
+		}else if (sp.equalsIgnoreCase("/freeNotice.do")) {
+			com = new FreeNotice();
+		}else if (sp.equalsIgnoreCase("/freenewPostui.do")) {
+			com = new FreeNewPostUICommand();
+		}else if (sp.equalsIgnoreCase("/freenewPost.do")) {
+			com = new FreeNewPostCommand();
 		}
 		
-=======
-		}else if (sp.equalsIgnoreCase("/newPostui2.do")) {
-			com = new NewPostUI2Command();
-		}else if (sp.equalsIgnoreCase("/newPost2.do")) {
-			com = new NewPost2Command();
-		}else if (sp.equalsIgnoreCase("/newPostui3.do")) {
-			com = new NewPostUI3Command();
-		}else if (sp.equalsIgnoreCase("/newPost3.do")) {
-			com = new NewPost3Command();
-		}else if (sp.equalsIgnoreCase("/search2.do")) {
-			com = new Search2Command();
-		}else if (sp.equalsIgnoreCase("/search3.do")) {
-			com = new Search3Command();
-		}else if (sp.equalsIgnoreCase("/fileDownloadCommand")) {
-			com = new FileDownloadCommand();
-		}else if (sp.equalsIgnoreCase("/delete2.do")) {
-			com = new Delete2Command();
-		}else if (sp.equalsIgnoreCase("/delete3.do")) {
-			com = new Delete3Command();
-		}else if (sp.equalsIgnoreCase("/read2.do")) {
-			com = new Read2Command();
-		}else if (sp.equalsIgnoreCase("/read3.do")) {
-			com = new Read3Command();
-		}else if (sp.equalsIgnoreCase("/updateui2.do")) {
-			com = new UpdateUI2Command();
-		}else if (sp.equalsIgnoreCase("/updateui3.do")) {
-			com = new UpdateUI3Command();
-		}else if (sp.equalsIgnoreCase("/update2.do")) {
-			com = new Update2Command();
-		}else if (sp.equalsIgnoreCase("/update3.do")) {
-			com = new Update3Command();
-		}else if (sp.equalsIgnoreCase("/replyui2.do")) {
-			com = new ReplyUI2Command();
-		}else if (sp.equalsIgnoreCase("/replyui3.do")) {
-			com = new ReplyUI3Command();
-		}else if (sp.equalsIgnoreCase("/reply2.do")) {
-			com = new Reply2Command();
-		}else if (sp.equalsIgnoreCase("/reply3.do")) {
-			com = new Reply3Command();
-		}else if (sp.equalsIgnoreCase("/list2.do")) {
-			com = new List2Command();
-		}else if (sp.equalsIgnoreCase("/list3.do")) {
-			com = new List3Command();
-		}	
->>>>>>> 77aedcf6caec09aa9991552fb5ba545281cf1a19:HomePageT1/src/kr/co/controller/FrontController.java
 		
 		if(com != null) {
 			CommandAction action = com.execute(request, response);

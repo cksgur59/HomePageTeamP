@@ -28,34 +28,23 @@ public class MemberDAO {
 		}
 	}
 	
-	public int scannum() {
-		int rnum = 0;
-		Connection conn = null;
-	    PreparedStatement pstmt = null;
-	    String sql = "SELECT ROWNUM rnum,num FROM member";
-	    ResultSet rs = null;
-	    
-	    try {
-			conn=dataFactory.getConnection();
-			pstmt= conn.prepareStatement(sql);
-	    	rs=pstmt.executeQuery();
-	    	
-	    	while(rs.next()) {
-	    		rnum = rs.getInt("rnum");
-	    	}
-	    	rnum =rnum+1;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			closeAll(rs, pstmt, conn);
-		}
-	    return rnum;
-	}
+	/*
+	 * public int scannum() { int rnum = 0; Connection conn = null;
+	 * PreparedStatement pstmt = null; String sql =
+	 * "SELECT ROWNUM rnum,num FROM member"; ResultSet rs = null;
+	 * 
+	 * try { conn=dataFactory.getConnection(); pstmt= conn.prepareStatement(sql);
+	 * rs=pstmt.executeQuery();
+	 * 
+	 * while(rs.next()) { rnum = rs.getInt("rnum"); } rnum =rnum+1; } catch
+	 * (Exception e) { e.printStackTrace(); }finally { closeAll(rs, pstmt, conn); }
+	 * return rnum; }
+	 */
 	
 	public void insertMember(MemberDTO dto) {
 		 Connection conn = null;
 	      PreparedStatement pstmt = null;
-	      String sql = "INSERT INTO member (id,password,name,email,phoneNumber,address,gender,profileImgName,rights) VALUES(?,?,?,?,?,?,?,?,?,?)";
+	      String sql = "INSERT INTO member (id,password,name,email,phoneNumber,address,gender,profileImgName,rights) VALUES(?,?,?,?,?,?,?,?,?)";
 	      
 	      try {
 			conn = dataFactory.getConnection();
@@ -70,7 +59,6 @@ public class MemberDAO {
 			pstmt.setString(7, dto.getGender());
 			pstmt.setString(8, dto.getProfileImgName());
 			pstmt.setString(9, dto.getRights());
-			pstmt.setString(10, dto.getNum());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -129,10 +117,8 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
-				String num = rs.getString("num");
-				
-				
-				dto = new MemberDTO(id1, password, name, email, phoneNumber, address, gender, profileImgName, rights,num);
+			
+				dto = new MemberDTO(id1, password, name, email, phoneNumber, address, gender, profileImgName, rights);
 	    	}
 	    	
 		} catch (Exception e) {
@@ -198,12 +184,11 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
-				String num = rs.getString("num");
 				
-				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName , rights,num);
+				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName , rights);
 				
 			}else {
-				dto = new MemberDTO(null, null, null, null, null, null, null, null ,null,null);
+				dto = new MemberDTO(null, null, null, null, null, null, null, null ,null);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -319,8 +304,7 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				String profileImgName = rs.getString("profileImgName");
 				String rights = rs.getString("rights");
-				String num = rs.getString("num");
-				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName, rights,num);
+				dto = new MemberDTO(id, password, name, email, phoneNumber, address, gender, profileImgName, rights);
 				list.add(dto);
 			}
 			

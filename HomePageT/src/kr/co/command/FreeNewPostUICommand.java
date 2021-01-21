@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.DB.MemberDAO;
 import kr.co.DB.MemberDTO;
 
-public class NewPostUICommand implements Command {
+public class FreeNewPostUICommand implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
@@ -21,10 +21,7 @@ public class NewPostUICommand implements Command {
 		
 		request.setAttribute("list", list);
 		
-		
-		
-		return new CommandAction(false, "newPost.jsp");
+		return new CommandAction(false, "freenewPost.jsp");
 	}
 
 }
-

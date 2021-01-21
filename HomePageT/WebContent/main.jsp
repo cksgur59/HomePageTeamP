@@ -9,6 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <title>임시 메인</title>
+<style type="text/css">
+li{
+	cursor: pointer;
+}
+</style>
 <link href="main.css" rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,7 +27,6 @@
 	<button onclick="logout_confirm()">로그아웃</button>
 
 	<script type="text/javascript">
-<<<<<<< HEAD
       	function logout_confirm(){
       		var answer=confirm("정말 로그아웃 하시겠습니까?");
       		
@@ -34,29 +38,17 @@
       </script>
       <!-- 임시 관리자 페이지 이동 시작-->
 	<c:if test="${login.rights =='admin'}">
+		
 		<button onclick="go_adminPage()">관리자 페이지</button>
 	</c:if>
+	
 	<script type="text/javascript">
 function go_adminPage(){
 location.href = "adminPage.do";
 }
 </script>
 	<!-- 임시 관리자 페이지 이동 끝 -->
-=======
-		function logout_confirm() {
-			var answer = confirm("정말 로그아웃 하시겠습니까?");
 
-			if (answer == true) {
-				location.href = "logout.do";
-			}
-		}
-	</script>
-	
-	<c:if test="${login != null}">
-		<button><a href="mypage.do">마이페이지(${login.id})</a></button>
-	</c:if>
-	
->>>>>>> 6a7c1ae5e1933205c1180dff36764d38c2b52851
 	<div id="board">
 
 		<div id="wapper">
@@ -68,13 +60,21 @@ location.href = "adminPage.do";
 
 			<header>
 				<ul>
-					<li>공지사항</li>
-					<li>업데이트</li>
-					<li>자유게시판</li>
+					<li value="linotice">공지사항</li>
+					<li value="liupdate">업데이트</li>
+					<li value="freenotice">자유게시판</li>
 					<li>스크린샷</li>
 					<li>자료실</li>
 					<li>고객센터</li>
 				</ul>
+				<script type="text/javascript">
+					$("li[value='linotice']").click(function(){
+						location.href = "notice.do";
+					});
+					$("li[value='freenotice']").click(function(){
+						location.href = "freenotice.do";
+					});
+				</script>
 			</header>
 
 
@@ -98,9 +98,15 @@ location.href = "adminPage.do";
 					<p>공지사항</p>
 					<!-- article -->
 					<article>
-						<li>최신글을 넣어주세요.1</li>
-						<li>최신글을 넣어주세요.2</li>
-						<li>최신글을 넣어주세요.3</li>
+						<c:if test="${notilist1.title != null}">
+						<a href="read.do?num=${notilist1.num}">1. ${notilist1.title}</a><br>
+						</c:if>
+						<c:if test="${notilist2.title != null}">
+						<a href="read.do?num=${notilist2.num}">2. ${notilist2.title}</a><br>
+						</c:if>
+						<c:if test="${notilist3.title != null}">
+						<a href="read.do?num=${notilist3.num}">3. ${notilist3.title}</a><br>
+						</c:if>
 					</article>
 				</section>
 
@@ -120,9 +126,15 @@ location.href = "adminPage.do";
 					<p>자유게시판</p>
 					<!-- article -->
 					<article>
-						<li>최신글을 넣어주세요.1</li>
-						<li>최신글을 넣어주세요.2</li>
-						<li>최신글을 넣어주세요.3</li>
+						<c:if test="${freenoti1.title != null}">
+						<a href="read.do?num=${freenoti1.num}">1. ${freenoti1.title}</a><br>
+						</c:if>
+						<c:if test="${freenoti2.title != null}">
+						<a href="read.do?num=${freenoti2.num}">2. ${freenoti2.title}</a><br>
+						</c:if>
+						<c:if test="${freenoti3.title != null}">
+						<a href="read.do?num=${freenoti3.num}">3. ${freenoti3.title}</a><br>
+						</c:if>
 					</article>
 				</section>
 
@@ -138,21 +150,5 @@ location.href = "adminPage.do";
 
 		</div>
 	</div>
-
-<<<<<<< HEAD
-	
-=======
-	<!-- 임시 관리자 페이지 이동 시작-->
-	<c:if test="${login.rights =='admin'}">
-		<button onclick="go_adminPage()">관리자 페이지</button>
-	</c:if>
-	<script type="text/javascript">
-		function go_adminPage() {
-			location.href = "adminPage.do";
-		}
-	</script>
-	<!-- 임시 관리자 페이지 이동 끝 -->
->>>>>>> 6a7c1ae5e1933205c1180dff36764d38c2b52851
-
 </body>
 </html>

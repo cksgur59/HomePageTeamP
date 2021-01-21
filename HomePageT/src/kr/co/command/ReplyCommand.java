@@ -20,11 +20,13 @@ public class ReplyCommand implements Command {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		NoticeDTO repdto = new NoticeDTO(-1, author, title, content, null, -1, -1, -1, -1);
+		NoticeDAO dao = new NoticeDAO();
+		
+		NoticeDTO repdto = new NoticeDTO(-1,0, author, title, content, null, -1, -1, -1, -1);
 		
 		new NoticeDAO().reply(orinum, repdto);
 		
-		return new CommandAction(true, "notice.do");
+		return new CommandAction(true, "freenotice.do");
 	}
 
 }

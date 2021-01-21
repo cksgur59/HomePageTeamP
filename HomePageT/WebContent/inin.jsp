@@ -12,10 +12,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-
-<form action="insertui.do">
-	<input type="submit" value="ghldnjs">
-</form>
-
+<p>${notilist1}</p>
+<a>${notilist1}</a>
+<button>${notilist1}</button>
 </body>
 </html>

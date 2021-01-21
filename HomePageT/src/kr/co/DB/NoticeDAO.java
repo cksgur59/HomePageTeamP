@@ -66,6 +66,7 @@ public class NoticeDAO {
 			
 			while (rs.next()) {
 				int num = rs.getInt("num");
+				int menu = rs.getInt("menu");
 				String author = rs.getString("author");
 				String title = rs.getString("title");
 				String writeday = rs.getString("writeday");
@@ -74,7 +75,7 @@ public class NoticeDAO {
 				int repstep = rs.getInt("repstep");
 				int repindent = rs.getInt("repindent");
 				
-				NoticeDTO dto = new NoticeDTO(num, author, title, null, writeday, readcnt, reproot, repstep, repindent);
+				NoticeDTO dto = new NoticeDTO(num,menu , author, title, null, writeday, readcnt, reproot, repstep, repindent);
 				list.add(dto);
 				
 			}
@@ -87,10 +88,10 @@ public class NoticeDAO {
 		
 	}
 	
-	public void newPost(NoticeDTO dto) {
+	public void newPost(NoticeDTO dto,int mmm) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO NOTICE (num, author, title, content, reproot, repstep, repindent) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO NOTICE (num,menu, author, title, content, reproot, repstep, repindent) VALUES(?,?,?,?,?,?,?,?)";
 		
 		try {
 			conn = dataFactory.getConnection();
@@ -98,12 +99,13 @@ public class NoticeDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 	        pstmt.setInt(1, num);
-	        pstmt.setString(2, dto.getAuthor());
-	        pstmt.setString(3, dto.getTitle());
-	        pstmt.setString(4, dto.getContent());
-	        pstmt.setInt(5, num);
-	        pstmt.setInt(6, 0);
+	        pstmt.setInt(2, mmm);
+	        pstmt.setString(3, dto.getAuthor());
+	        pstmt.setString(4, dto.getTitle());
+	        pstmt.setString(5, dto.getContent());
+	        pstmt.setInt(6, num);
 	        pstmt.setInt(7, 0);
+	        pstmt.setInt(8, 0);
 	        
 	        pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -135,13 +137,13 @@ public class NoticeDAO {
 		return num;
 	}
 
-	public PageTO page(int curpage) {
+	public PageTO page(int curpage ,int menunum) {
 		PageTO to = new PageTO(curpage);
 		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "SELECT * FROM (SELECT ROWNUM rnum, num, author, title, writeday, readcnt, repindent from(SELECT * FROM NOTICE order by reproot desc, repstep asc)) WHERE rnum >= ? AND rnum <= ?";
+		String sql = "SELECT * FROM (SELECT ROWNUM rnum, num,menu, author, title, writeday, readcnt, repindent from(SELECT * FROM NOTICE order by reproot desc, repstep asc)) WHERE rnum >= ? AND rnum <= ? AND menu = ?";
 		ResultSet rs = null;
 		
 		try {
@@ -153,7 +155,7 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, to.getStartnum());
 			pstmt.setInt(2, to.getEndnum());
-			
+			pstmt.setInt(3, menunum);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int num = rs.getInt("num");
@@ -163,7 +165,7 @@ public class NoticeDAO {
 				int readcnt = rs.getInt("readcnt");
 				int repindent = rs.getInt("repindent");
 				
-				NoticeDTO dto = new NoticeDTO(num, author, title, null, writeday, readcnt, -1, -1, repindent);
+				NoticeDTO dto = new NoticeDTO(num,0, author, title, null, writeday, readcnt, -1, -1, repindent);
 				
 				list.add(dto);
 			}
@@ -220,13 +222,14 @@ public class NoticeDAO {
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				int menu = rs.getInt("menu");
 		        String author = rs.getString("author");
 		        String title = rs.getString("title");
 		        String content = rs.getString("content");
 		        String writeday = rs.getString("writeday");
 		        int readcnt = rs.getInt("readcnt");
 		            
-		        dto = new NoticeDTO(num, author, title, content, writeday, readcnt, -1, -1, -1);
+		        dto = new NoticeDTO(num,menu, author, title, content, writeday, readcnt, -1, -1, -1);
 			}
 			
 			isok = true;
@@ -263,6 +266,7 @@ public class NoticeDAO {
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				int menu = rs.getInt("menu");
 				String author = rs.getString("author");
 		        String title = rs.getString("title");
 		        String content = rs.getString("content");
@@ -272,7 +276,7 @@ public class NoticeDAO {
 		        int repstep = rs.getInt("repstep");
 		        int repindent = rs.getInt("repindent");
 		        
-		        dto = new NoticeDTO(num, author, title, content, writeday, readcnt, reproot, repstep, repindent);
+		        dto = new NoticeDTO(num,menu,author, title, content, writeday, readcnt, reproot, repstep, repindent);
 			}
 			
 		} catch (Exception e) {
@@ -308,7 +312,7 @@ public class NoticeDAO {
 	public void reply(int orinum, NoticeDTO repdto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO NOTICE" + "(num, author, title, content, reproot, repstep, repindent) " + "VALUES (?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO NOTICE" + "(num,menu, author, title, content, reproot, repstep, repindent) " + "VALUES (?,?,?,?,?,?,?,?)";
 		boolean isok = false;
 		
 		try {
@@ -323,12 +327,13 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, num);
-			pstmt.setString(2, repdto.getAuthor());
-			pstmt.setString(3, repdto.getTitle());
-			pstmt.setString(4, repdto.getContent());
-			pstmt.setInt(5, oridto.getReproot());
-			pstmt.setInt(6, oridto.getRepstep()+1);
-			pstmt.setInt(7, oridto.getRepindent()+1);
+			pstmt.setInt(2, 10);
+			pstmt.setString(3, repdto.getAuthor());
+			pstmt.setString(4, repdto.getTitle());
+			pstmt.setString(5, repdto.getContent());
+			pstmt.setInt(6, oridto.getReproot());
+			pstmt.setInt(7, oridto.getRepstep()+1);
+			pstmt.setInt(8, oridto.getRepindent()+1);
 			
 			pstmt.executeUpdate();
 			
@@ -404,13 +409,14 @@ public class NoticeDAO {
 			
 			while (rs.next()) {
 				int num = rs.getInt("num");
+				int menu = rs.getInt("menu");
 				String author = rs.getString("author");
 				String title = rs.getString("title");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt");
 				int repindent = rs.getInt("repindent");
 				
-				NoticeDTO dto = new NoticeDTO(num, author, title, null, writeday, readcnt, -1, -1, repindent);
+				NoticeDTO dto = new NoticeDTO(num,menu, author, title, null, writeday, readcnt, -1, -1, repindent);
 				list.add(dto);
 			}
 		} catch (Exception e) {
@@ -462,13 +468,14 @@ public class NoticeDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int num = rs.getInt("num");
+				int menu = rs.getInt("menu");
 				String author = rs.getString("author");
 				String title = rs.getString("title");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt");
 				int repindent = rs.getInt("repindent");
 				
-				NoticeDTO dto = new NoticeDTO(num, author, title, null, writeday, readcnt, -1, -1, repindent);
+				NoticeDTO dto = new NoticeDTO(num,menu, author, title, null, writeday, readcnt, -1, -1, repindent);
 				
 				list.add(dto);
 			}
@@ -504,13 +511,14 @@ public class NoticeDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int num = rs.getInt("num");
+				int menu = rs.getInt("menu");
 				String author = rs.getString("author");
 				String title = rs.getString("title");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt");
 				int repindent = rs.getInt("repindent");
 				
-				NoticeDTO dto = new NoticeDTO(num, author, title, null, writeday, readcnt, -1, -1, repindent);
+				NoticeDTO dto = new NoticeDTO(num,menu, author, title, null, writeday, readcnt, -1, -1, repindent);
 				
 				list.add(dto);
 			}
@@ -593,13 +601,14 @@ public class NoticeDAO {
 			
 			while (rs.next()) {
 				int num = rs.getInt("num");
+				int menu = rs.getInt("menu");
 				String author = rs.getString("author");
 				String title = rs.getString("title");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt");
 				int repindent = rs.getInt("repindent");
 				
-				NoticeDTO dto = new NoticeDTO(num, author, title, null, writeday, readcnt, -1, -1, repindent);
+				NoticeDTO dto = new NoticeDTO(num,menu, author, title, null, writeday, readcnt, -1, -1, repindent);
 				list.add(dto);
 			}
 		} catch (Exception e) {
@@ -628,13 +637,14 @@ public class NoticeDAO {
 			
 			while (rs.next()) {
 				int num = rs.getInt("num");
+				int menu = rs.getInt("menu");
 				String author = rs.getString("author");
 				String title = rs.getString("title");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt");
 				int repindent = rs.getInt("repindent");
 				
-				NoticeDTO dto = new NoticeDTO(num, author, title, null, writeday, readcnt, -1, -1, repindent);
+				NoticeDTO dto = new NoticeDTO(num,menu, author, title, null, writeday, readcnt, -1, -1, repindent);
 				list.add(dto);
 			}
 		} catch (Exception e) {
@@ -644,6 +654,97 @@ public class NoticeDAO {
 		}
 		
 		return list;
+	}
+	
+	public List<NoticeDTO> get3notice(int mmm) {
+		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "SELECT * FROM(SELECT * FROM notice ORDER BY ROWNUM DESC) WHERE ROWNUM <=3 AND menu =?";
+		ResultSet rs = null;
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mmm);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int num = rs.getInt("num");
+				int menu = rs.getInt("menu");
+				String title =  rs.getString("title");
+				list.add(new NoticeDTO(num,menu, null, title, null, null, 0, 0, 0, 0));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public int selectmenu(int num) {
+		int menu = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "SELECT * FROM notice WHERE num = ?";
+		ResultSet rs = null;
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				menu = rs.getInt("menu");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return menu;
+	}
+	public PageTO pagefree(int curpage ,int menunum) {
+		PageTO to = new PageTO(curpage);
+		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "SELECT * FROM (SELECT ROWNUM rnum, num,menu, author, title, writeday, readcnt, repindent from(SELECT * FROM NOTICE order by reproot desc, repstep asc)) WHERE rnum >= ? AND rnum <= ? AND menu = ? OR menu = ?";
+		ResultSet rs = null;
+		
+		try {
+			conn = dataFactory.getConnection();
+			
+			int amount = getAmount(conn);
+			to.setAmount(amount);
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, to.getStartnum());
+			pstmt.setInt(2, to.getEndnum());
+			pstmt.setInt(3, menunum);
+			pstmt.setInt(4, 10);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int num = rs.getInt("num");
+				String author = rs.getString("author");
+				String title = rs.getString("title");
+				String writeday = rs.getString("writeday");
+				int readcnt = rs.getInt("readcnt");
+				int repindent = rs.getInt("repindent");
+				
+				NoticeDTO dto = new NoticeDTO(num,0, author, title, null, writeday, readcnt, -1, -1, repindent);
+				
+				list.add(dto);
+			}
+			to.setList(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		return to;
 	}
 
 }	
