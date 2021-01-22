@@ -73,5 +73,39 @@ div header ul li:last-child {
 
 #mypage {
 	text-align: left;
-	margin-left: 100px;
+	margin-left: 110px;
+	height: 400px;
+	width: 480px;
+	border-radius: 20px;
+	border: 3px solid black;
+	float: left;
+}
+
+#mypage h2 {
+	text-align: center;
+}
+
+#mypage ul {
+	list-style-position: inside;
+	list-style-type: square;
+}
+
+#mynotice {
+	text-align: left;
+	margin-right: 110px;
+	height: 400px;
+	width: 480px;
+	border-radius: 20px;
+	border: 3px solid black;
+	float: right;
+}
+
+#mynotice h2 {
+	text-align: center;
+}
+
+#alter {
+	background-color: white;
+	float: left;
+	margin-left: 60px;
 }

@@ -86,7 +86,7 @@
 
 </table>
 <div>
-	<jsp:include page="page.jsp"/>
+	<jsp:include page="page2.jsp"/>
 </div>
 
 <form action="search.do">

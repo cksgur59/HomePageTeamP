@@ -41,8 +41,15 @@ public class UpdateCheck extends HttpServlet {
 		dao.updateIMV(id, valv, selectv);
 		
 		String selctmenu = dao.selectmenu(selectv, id);
-		
-		if(selctmenu.equals(valv)) {
+		if(selectv.equals("id")) {
+			String idmenu = null; 
+			idmenu =dao.selectmenu(selectv, valv);
+			if(idmenu != null) {
+				updateCheckMsg = isok;
+			}else {
+				updateCheckMsg = "실패";
+			}
+		}else if(selctmenu.equals(valv)) {
 			updateCheckMsg = isok; 
 		}else {
 			updateCheckMsg = "실패";

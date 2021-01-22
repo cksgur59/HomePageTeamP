@@ -13,19 +13,20 @@ public class QnACommand implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
 		String scp = request.getParameter("curpage");
 		int curpage = 1;
-	
+		
 		if (scp != null) {
 			curpage = Integer.parseInt(scp);
 		}
-	
+		
 		NoticeDAO dao = new NoticeDAO();
-		PageTO to = dao.page3(curpage);
-	
+		PageTO to = dao.pagefree(curpage, 2);
+		
 		request.setAttribute("list", to.getList());
 		request.setAttribute("to", to);
-	
+		
 		return new CommandAction(false, "qna.jsp");
 	}
 

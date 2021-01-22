@@ -37,7 +37,7 @@
 </style>
 </head>
 <body>
-<form action="newPostui3.do">
+<form action="freenewPostui.do">
 	<input type="submit" value="글작성">
 </form>
 <br>
@@ -67,7 +67,7 @@
 						&nbsp;&nbsp;
 					</c:forEach>
 					
-					<a href="read3.do?num=${dto.num}">
+					<a href="read.do?num=${dto.num}">
 						${dto.title}
 					</a>
 				</td>
@@ -85,7 +85,7 @@
 	<jsp:include page="page3.jsp"/>
 </div>
 
-<form action="search3.do">
+<form action="search.do">
 <select name="searchoption">
 	<option value="author">작성자</option>
 	<option value="title">제목</option>

@@ -63,9 +63,9 @@ location.href = "adminPage.do";
 					<li value="linotice">공지사항</li>
 					<li value="liupdate">업데이트</li>
 					<li value="freenotice">자유게시판</li>
-					<li>스크린샷</li>
-					<li>자료실</li>
-					<li>고객센터</li>
+					<li value="screenshot">스크린샷</li>
+					<li value="upload">자료실</li>
+					<li value="qna">고객센터</li>
 				</ul>
 				<script type="text/javascript">
 					$("li[value='linotice']").click(function(){
@@ -73,6 +73,9 @@ location.href = "adminPage.do";
 					});
 					$("li[value='freenotice']").click(function(){
 						location.href = "freenotice.do";
+					});
+					$("li[value='qna']").click(function(){
+						location.href = "qna.do";
 					});
 				</script>
 			</header>

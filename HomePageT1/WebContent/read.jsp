@@ -28,6 +28,8 @@
 <p>${dto.content}</p>
 <c:if test="${dto.menu != 1}">
 <a href="replyui.do?num=${dto.num}">댓글</a>
+<a href="updateui.do?num=${dto.num}">수정</a>
+<a href="delete.do?num=${dto.num}">삭제</a>
 </c:if>
 <c:if test="${login.rights == 'admin' }">
 <a href="updateui.do?num=${dto.num}">수정</a>

@@ -20,7 +20,7 @@
 <body>
 <h1>업로드</h1>
 <form action="upload" method="post" enctype="multipart/form-data">
-	ID: <input name="id"><br>
+	ID: <input type="hidden" name="author" value="${login.id}">${login.id} <br>
 	첨부파일: <input type="file" name="file"><br>
 	<input type="submit" value="업로드">
 

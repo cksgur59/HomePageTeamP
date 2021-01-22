@@ -62,28 +62,93 @@ ${dto.name}님의 정보 수정화면
 		<td style="height: 60px;">${dto.address}</td>
 		<td>${dto.rights}</td>
 	</tr>
-	<tr>
-		<th>수정</th>
-		
+	<tr style="width: 96px;">
+		<th style="height: 30px;">수정</th>
+		<td style="height: 130px;"><button name = "profileImgName">수정</button></td>
 		<td><button name = "name">수정</button></td>
-		
-		
-
+		<td><button name = "gender">수정</button></td>
+		<td><button name = "id">수정</button></td>
+		<td><button name = "password">수정</button></td>
+		<td><button name = "email">수정</button></td>
+		<td><button name = "phoneNumber">수정</button></td>
+		<td style="height: 60px;"><button name = "address">수정</button></td>
 	</tr>
 
 
 </table>
 <input name="idval" type="hidden" value="${dto.id}">
+<input name="gender" type="hidden" value="${dto.gender }">
 <script type="text/javascript">
 $(document).ready(function(){
 	var id = $("input[name='idval']").val();
+	var gender = $("input[name='gender']").val();
+	
+	$("button[name='profileImgName']").click(function(event) {
+		event.preventDefault();
+		alert("미구현");
+	});
+
+	
  $("button[name='name']").click(function(event) {
 	event.preventDefault();
 	var valv = prompt("새로운 이름을 입력해 주세요.");
 	selectv = "name";
-	console.log(id);
 	checking(selectv, valv , id);
 });
+ 
+ $("button[name='gender']").click(function(event) {
+		event.preventDefault();
+		var an;
+		var valv
+		an = confirm("성별을 바꾸시겠습니까?");
+		console.log(an);
+		console.log(gender);
+		if(an){
+			if(gender=="m"){
+				valv = "w";
+			}else{
+				valv = "m";
+			}
+		}
+		else{
+			return;
+		}
+		console.log(valv);
+		selectv = "gender";
+		checking(selectv, valv , id);
+	});
+ 
+ $("button[name='id']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 ID를 입력해 주세요.");
+		selectv = "id";
+		checkingid(selectv, valv , id);
+	});
+ $("button[name='password']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 password를 입력해 주세요.");
+		selectv = "password";
+		checking(selectv, valv , id);
+	});
+ $("button[name='email']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 email를 입력해 주세요.");
+		selectv = "email";
+		checking(selectv, valv , id);
+	});
+ $("button[name='phoneNumber']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 핸드폰 번호를 입력해 주세요.");
+		selectv = "phoneNumber";
+		checking(selectv, valv , id);
+	});
+ $("button[name='address']").click(function(event) {
+		event.preventDefault();
+		var valv = prompt("새로운 주소를 입력해 주세요.");
+		selectv = "address";
+		checking(selectv, valv , id);
+	});
+ 
 function checking(selectv, valv , id ) {
 	$.ajax({
 		type: 'get',
@@ -98,6 +163,31 @@ function checking(selectv, valv , id ) {
         	console.log(updateCheckMsg);
         	if(updateCheckMsg=="성공"){
         	alert(updateCheckMsg);
+        	window.location.reload();
+        	}
+        },
+        
+        error: function(request, status, error) {
+           console.log(error);
+           alert(updateCheckMsg);
+        },
+	});
+}
+function checkingid(selectv, valv , id ) {
+	$.ajax({
+		type: 'get',
+        url: 'UpdateCheck',
+        data: {
+        	selectv : selectv,
+        	valv : valv,
+        	id : id
+        },
+        dataType: 'text',
+        success: function(updateCheckMsg) {
+        	console.log(updateCheckMsg);
+        	if(updateCheckMsg=="성공"){
+        	alert(updateCheckMsg);
+        	idchange(valv);
         	}
         },
         
@@ -108,6 +198,11 @@ function checking(selectv, valv , id ) {
 	});
 }
 });
+function idchange(valv){
+	console.log(valv);
+	location.href = "updateMember.do?id="+valv;
+}
+
 </script>
 
 </body>
