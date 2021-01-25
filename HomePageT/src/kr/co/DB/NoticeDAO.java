@@ -92,6 +92,7 @@ public class NoticeDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO NOTICE (num,menu, author, title, content, reproot, repstep, repindent) VALUES(?,?,?,?,?,?,?,?)";
+
 		
 		try {
 			conn = dataFactory.getConnection();

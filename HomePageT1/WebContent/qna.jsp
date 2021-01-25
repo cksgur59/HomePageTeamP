@@ -37,7 +37,11 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 <form action="newPostui3.do">
+=======
+<form action="freenewPostui.do">
+>>>>>>> dd12497d2519de215581d21910539e05897e5f32
 	<input type="submit" value="글작성">
 </form>
 <br>
@@ -67,7 +71,11 @@
 						&nbsp;&nbsp;
 					</c:forEach>
 					
+<<<<<<< HEAD
 					<a href="read3.do?num=${dto.num}">
+=======
+					<a href="read.do?num=${dto.num}">
+>>>>>>> dd12497d2519de215581d21910539e05897e5f32
 						${dto.title}
 					</a>
 				</td>
@@ -85,7 +93,11 @@
 	<jsp:include page="page3.jsp"/>
 </div>
 
+<<<<<<< HEAD
 <form action="search3.do">
+=======
+<form action="search.do">
+>>>>>>> dd12497d2519de215581d21910539e05897e5f32
 <select name="searchoption">
 	<option value="author">작성자</option>
 	<option value="title">제목</option>

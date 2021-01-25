@@ -1,3 +1,4 @@
+
 package kr.co.DB;
 
 import java.io.Serializable;
@@ -143,3 +144,5 @@ public class MemberDTO implements Serializable{
 	}
 	
 }
+
+

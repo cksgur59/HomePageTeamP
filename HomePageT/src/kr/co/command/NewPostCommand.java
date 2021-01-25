@@ -1,3 +1,4 @@
+<<<<<<< HEAD:HomePageT/src/kr/co/command/NewPostCommand.java
 package kr.co.command;
 
 import java.io.IOException;
@@ -27,3 +28,34 @@ public class NewPostCommand implements Command {
 	}
 
 }
+=======
+package kr.co.command;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.DB.NoticeDAO;
+import kr.co.DB.NoticeDTO;
+import kr.co.command.CommandAction;
+
+public class NewPostCommand implements Command {
+
+	@Override
+	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		String author = request.getParameter("author");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		NoticeDTO dto = new NoticeDTO(-1, 1, author, title, content, null, 0, 0, 0, 0);
+		NoticeDAO dao = new NoticeDAO();
+		dao.newPost(dto,1);
+		
+		return new CommandAction(true, "notice.do");
+	}
+
+}
+>>>>>>> dd12497d2519de215581d21910539e05897e5f32:HomePageT1/src/kr/co/command/NewPostCommand.java

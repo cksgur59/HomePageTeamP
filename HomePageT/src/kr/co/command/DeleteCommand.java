@@ -17,7 +17,7 @@ public class DeleteCommand implements Command {
 		
 		new NoticeDAO().delete(num);
 		
-		return new CommandAction(true, "notice.do");
+		return new CommandAction(true, "freenotice.do");
 	}
 
 }

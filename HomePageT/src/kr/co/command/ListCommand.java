@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.DB.FreeboardDAO;
+import kr.co.DB.NoticeDAO;
 import kr.co.DB.PageTO;
 
 public class ListCommand implements Command {
@@ -20,7 +20,7 @@ public class ListCommand implements Command {
 			curpage = Integer.parseInt(scp);
 		}
 	
-		FreeboardDAO dao = new FreeboardDAO();
+		NoticeDAO dao = new NoticeDAO();
 		PageTO to = dao.page2(curpage);
 	
 		request.setAttribute("list", to.getList());
