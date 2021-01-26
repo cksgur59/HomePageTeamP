@@ -12,8 +12,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<p>${notilist1}</p>
-<a>${notilist1}</a>
-<button>${notilist1}</button>
+<h1>파일 업로드</h1>
+<form action="mupload" method="post" enctype="multipart/form-data">
+   ID: <input name="id"><br>
+   첨부파일: <input type="file" name="file"><br>
+   <input type="submit" value="업로드">
+</form>
 </body>
 </html>

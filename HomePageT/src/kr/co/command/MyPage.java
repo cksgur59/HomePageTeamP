@@ -1,33 +1,25 @@
 package kr.co.command;
 
 import java.io.IOException;
-<<<<<<< HEAD:HomePageT/src/kr/co/command/MyPage.java
-=======
+
 import java.util.List;
->>>>>>> dd12497d2519de215581d21910539e05897e5f32:HomePageT1/src/kr/co/command/MainCommand.java
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD:HomePageT/src/kr/co/command/MyPage.java
-import kr.co.DB.MemberDTO;
 
-public class MyPage implements Command {
-=======
 import kr.co.DB.NoticeDAO;
 import kr.co.DB.NoticeDTO;
 
-public class MainCommand implements Command {
->>>>>>> dd12497d2519de215581d21910539e05897e5f32:HomePageT1/src/kr/co/command/MainCommand.java
+public class MyPage implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-<<<<<<< HEAD:HomePageT/src/kr/co/command/MyPage.java
-		return new CommandAction(false, "mypage.jsp");
-=======
+
 		
 		NoticeDAO dao = new NoticeDAO();
 		
@@ -70,7 +62,6 @@ public class MainCommand implements Command {
 		request.setAttribute("freenoti3", freenoti3);
 		
 		return new CommandAction(false, "main.jsp");
->>>>>>> dd12497d2519de215581d21910539e05897e5f32:HomePageT1/src/kr/co/command/MainCommand.java
 	}
 
 }

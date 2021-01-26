@@ -29,6 +29,10 @@
 	border: 1px solid #444444;
     padding: 10px;
 	}
+	
+	#file{
+	display: none;
+	}
 </style>
 
 <title>회원 정보 수정화면</title>
@@ -40,7 +44,7 @@ ${dto.name}님의 정보 수정화면
 <table>
 	<tr style="width: 200px;"> 
 		<th style="height: 30px;">목록</th>
-		<th style="height: 130px;">PROFILEIMGNAME</th>
+		<th style="height: 130px;"><br><br>PROFILEIMGNAME</th>
 		<th>NAME</th>
 		<th>GENDER</th>
 		<th>ID</th>
@@ -64,7 +68,17 @@ ${dto.name}님의 정보 수정화면
 	</tr>
 	<tr style="width: 96px;">
 		<th style="height: 30px;">수정</th>
-		<td style="height: 130px;"><button name = "profileImgName">수정</button></td>
+		<td style="height: 130px;">
+			 <form action="mupload" method="post" enctype="multipart/form-data">
+   				 <br><input type="file" name="file"><br>
+   		         <br><input type="submit" value="업로드">
+			 </form>
+		 </td>
+		<!-- <br><form action="memberimgupload" method="post" enctype="multipart/form-data">
+		<input type="file" id="file" name="file" onchange="imguploadinput(this)">
+		<button type="button" id="btn-upload">사진선택</button><br><br>
+		<input type="submit" value="수정">	 
+		</form>-->
 		<td><button name = "name">수정</button></td>
 		<td><button name = "gender">수정</button></td>
 		<td><button name = "id">수정</button></td>
@@ -79,6 +93,18 @@ ${dto.name}님의 정보 수정화면
 <input name="idval" type="hidden" value="${dto.id}">
 <input name="gender" type="hidden" value="${dto.gender }">
 <script type="text/javascript">
+
+$(function () {
+	$('#btn-upload').click(function(event){
+		event.preventDefault();
+		$('#file').click();
+	});
+});
+
+function imguploadinput(obj){
+	alert(obj.value);
+}
+
 $(document).ready(function(){
 	var id = $("input[name='idval']").val();
 	var gender = $("input[name='gender']").val();
