@@ -34,6 +34,8 @@ repstep NUMBER(5),
 repindent number(3)
 )
 
+drop table QNA
+
 CREATE TABLE menu1(
 id VARCHAR2(6) PRIMARY KEY,
 name VARCHAR2(30) NOT NULL

@@ -37,7 +37,7 @@
 </style>
 </head>
 <body>
-<form action="freenewPostui.do">
+<form action="qnanewPostui.do">
 	<input type="submit" value="글작성">
 </form>
 <br>
@@ -67,7 +67,7 @@
 						&nbsp;&nbsp;
 					</c:forEach>
 					
-					<a href="read.do?num=${dto.num}">
+					<a href="qnaRead.do?num=${dto.num}">
 						${dto.title}
 					</a>
 				</td>

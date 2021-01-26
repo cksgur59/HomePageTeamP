@@ -27,10 +27,25 @@ repindent number(3),
 FOREIGN KEY (author) REFERENCES member(id)
 )
 
+CREATE TABLE QNA(
+num NUMBER(5) PRIMARY KEY,
+menu NUMBER(20) NOT NULL,
+author VARCHAR2(15),
+title VARCHAR2(200) NOT NULL,
+content VARCHAR2(2000) NOT NULL,
+writeday DATE DEFAULT SYSDATE,
+readcnt NUMBER(8) DEFAULT 0,
+reproot NUMBER(5),
+repstep NUMBER(5),
+repindent number(3),
+FOREIGN KEY (author) REFERENCES member(id)
+)
+
 commit
 
 SELECT * FROM member
 SELECT * FROM NOTICE
+SELECT * FROM QNA
 
 DELETE FROM member where id = 'lch5592'
       
