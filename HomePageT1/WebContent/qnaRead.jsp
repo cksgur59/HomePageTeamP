@@ -29,11 +29,11 @@
 <c:if test="${dto.menu != 1}">
 <a href="qnaReplyui.do?num=${dto.num}">댓글</a>
 <a href="qnaUpdateui.do?num=${dto.num}">수정</a>
-<a href="delete.do?num=${dto.num}">삭제</a>
+<a href="qnaDelete.do?num=${dto.num}">삭제</a>
 </c:if>
 <c:if test="${login.rights == 'admin' }">
 <a href="qnaUpdateui.do?num=${dto.num}">수정</a>
-<a href="delete.do?num=${dto.num}">삭제</a>
+<a href="qnaDelete.do?num=${dto.num}">삭제</a>
 </c:if>
 <c:if test="${dto.menu == 1 }">
 <a href="notice.do">목록</a>

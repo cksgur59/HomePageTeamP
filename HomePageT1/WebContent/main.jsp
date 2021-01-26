@@ -65,7 +65,7 @@ location.href = "adminPage.do";
 					<li value="freenotice">자유게시판</li>
 					<li value="screenshot">스크린샷</li>
 					<li value="upload">자료실</li>
-					<li value="qna">고객센터</li>
+					<li value="qna">묻고답하기</li>
 				</ul>
 				<script type="text/javascript">
 					$("li[value='linotice']").click(function(){

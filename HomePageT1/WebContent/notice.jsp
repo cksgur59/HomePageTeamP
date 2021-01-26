@@ -95,7 +95,6 @@
 	<option value="author">작성자</option>
 	<option value="title">제목</option>
 	<option value="content">내용</option>
-	<option value="title_content">제목+내용</option>
 </select>
 <input name="searchkeyword">
 <input type="submit" value="검색">
