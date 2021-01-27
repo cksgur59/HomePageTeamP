@@ -47,6 +47,9 @@
 	
 	<div id="board">
 		<div id="wapper">
+		<form action="main.do">
+	<input type="submit" value="메인">
+	</form>
 			<!-- 헤더 시작 -->
 			<div id="maintop">EZEN PROGRAMING CLASS</div>
 			<h4>DEVELOPER - 이찬혁, 김승훈, 윤승수</h4>
