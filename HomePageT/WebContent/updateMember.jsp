@@ -69,10 +69,7 @@ ${dto.name}님의 정보 수정화면
 	<tr style="width: 96px;">
 		<th style="height: 30px;">수정</th>
 		<td style="height: 130px;">
-			 <form action="mupload" method="post" enctype="multipart/form-data">
-   				 <br><input type="file" name="file"><br>
-   		         <br><input type="submit" value="업로드">
-			 </form>
+			 <button name = "profileImgName">수정</button>
 		 </td>
 		<!-- <br><form action="memberimgupload" method="post" enctype="multipart/form-data">
 		<input type="file" id="file" name="file" onchange="imguploadinput(this)">

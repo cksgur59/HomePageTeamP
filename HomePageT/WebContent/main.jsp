@@ -19,7 +19,13 @@ li{
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<c:if test="${login == null }">
+	
+	<!-- 임시 관리자 페이지 이동 끝 -->
+
+	<div id="board">
+
+		<div id="wapper">
+			<c:if test="${login == null }">
 		<script type="text/javascript">
 			location.href = "login.jsp";
 		</script>
@@ -41,18 +47,14 @@ li{
 		
 		<button onclick="go_adminPage()">관리자 페이지</button>
 	</c:if>
-	
+	<c:if test="${login != null}">
+		<button><a href="mypage.do?id=${login.id}">마이페이지</a></button>
+	</c:if>
 	<script type="text/javascript">
 function go_adminPage(){
 location.href = "adminPage.do";
 }
 </script>
-	<!-- 임시 관리자 페이지 이동 끝 -->
-
-	<div id="board">
-
-		<div id="wapper">
-
 
 			<!-- 헤더 시작 -->
 			<div id="maintop">EZEN PROGRAMING CLASS</div>
