@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>임시 메인</title>
+<title>메인</title>
 <style type="text/css">
 li{
 	cursor: pointer;
@@ -58,7 +58,7 @@ location.href = "adminPage.do";
 
 			<!-- 헤더 시작 -->
 			<div id="maintop">EZEN PROGRAMING CLASS</div>
-			<h4>DEVELOPER - 이찬혁, 김승훈, 윤승수</h4>
+			
 
 			<header>
 				<ul>
