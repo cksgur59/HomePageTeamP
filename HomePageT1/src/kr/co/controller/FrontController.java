@@ -18,22 +18,12 @@ import kr.co.command.FreeNewPostUICommand;
 import kr.co.command.FreeNotice;
 import kr.co.command.InsertCommand;
 import kr.co.command.InsertUICommand;
-import kr.co.command.ListCommand;
 import kr.co.command.LoginCommand;
 import kr.co.command.LogoutCommand;
 import kr.co.command.MainCommand;
 import kr.co.command.NewPostCommand;
 import kr.co.command.NewPostUICommand;
 import kr.co.command.NoticeCommand;
-import kr.co.command.QnACommand;
-import kr.co.command.QnADeleteCommand;
-import kr.co.command.QnANewPostCommand;
-import kr.co.command.QnANewPostUICommand;
-import kr.co.command.QnAReadCommand;
-import kr.co.command.QnAReplyCommand;
-import kr.co.command.QnAReplyUICommand;
-import kr.co.command.QnAUpdateCommand;
-import kr.co.command.QnAUpdateUICommand;
 import kr.co.command.MyPage;
 import kr.co.command.ReadCommand;
 import kr.co.command.ReplyCommand;
@@ -80,8 +70,6 @@ public class FrontController extends HttpServlet {
 			com = new NewPostUICommand();	
 		}else if(sp.equalsIgnoreCase("/newPost.do")) {
 			com = new NewPostCommand();
-		}else if (sp.equalsIgnoreCase("/list.do")) {
-			com = new ListCommand();
 		}else if (sp.equalsIgnoreCase("/read.do")) {
 			com = new ReadCommand();
 		}else if (sp.equalsIgnoreCase("/updateui.do")) {
@@ -104,8 +92,6 @@ public class FrontController extends HttpServlet {
 			com = new UpdateMemberCommand();
 		}else if (sp.equalsIgnoreCase("/notice.do")) {
 			com = new NoticeCommand();
-		}else if (sp.equalsIgnoreCase("/qna.do")) {
-			com = new QnACommand();
 		}else if (sp.equalsIgnoreCase("/mypage.do")) {
 			com = new MyPage();
 		}else if (sp.equalsIgnoreCase("/freeNotice.do")) {
@@ -114,22 +100,6 @@ public class FrontController extends HttpServlet {
 			com = new FreeNewPostUICommand();
 		}else if (sp.equalsIgnoreCase("/freenewPost.do")) {
 			com = new FreeNewPostCommand();
-		}else if (sp.equalsIgnoreCase("/qnanewPostui.do")) {
-			com = new QnANewPostUICommand();
-		}else if (sp.equalsIgnoreCase("/qnanewPost.do")) {
-			com = new QnANewPostCommand();
-		}else if (sp.equalsIgnoreCase("/qnaReplyui.do")) {
-			com = new QnAReplyUICommand();
-		}else if (sp.equalsIgnoreCase("/qnaReply.do")) {
-			com = new QnAReplyCommand();
-		}else if (sp.equalsIgnoreCase("/qnaRead.do")) {
-			com = new QnAReadCommand();
-		}else if (sp.equalsIgnoreCase("/qnaUpdateui.do")) {
-			com = new QnAUpdateUICommand();
-		}else if (sp.equalsIgnoreCase("/qnaUpdate.do")) {
-			com = new QnAUpdateCommand();
-		}else if (sp.equalsIgnoreCase("/qnaDelete.do")) {
-			com = new QnADeleteCommand();
 		}
 		
 		

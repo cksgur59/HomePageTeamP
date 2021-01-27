@@ -91,7 +91,8 @@ public class NoticeDAO {
 	public void newPost(NoticeDTO dto,int mmm) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO NOTICE (num, menu, author, title, content, reproot, repstep, repindent) VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO NOTICE (num,menu, author, title, content, reproot, repstep, repindent) VALUES(?,?,?,?,?,?,?,?)";
+
 		
 		try {
 			conn = dataFactory.getConnection();
@@ -445,92 +446,6 @@ public class NoticeDAO {
 		}
 		
 	}
-
-	public PageTO page2(int curpage) {
-		PageTO to = new PageTO(curpage);
-		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "SELECT * FROM (SELECT ROWNUM rnum, num, author, title, writeday, readcnt, repindent from(SELECT * FROM NOITCE order by reproot desc, repstep asc)) WHERE rnum >= ? AND rnum <= ?";
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			
-			int amount = getAmount(conn);
-			to.setAmount(amount);
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, to.getStartnum());
-			pstmt.setInt(2, to.getEndnum());
-			
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				int num = rs.getInt("num");
-				int menu = rs.getInt("menu");
-				String author = rs.getString("author");
-				String title = rs.getString("title");
-				String writeday = rs.getString("writeday");
-				int readcnt = rs.getInt("readcnt");
-				int repindent = rs.getInt("repindent");
-				
-				NoticeDTO dto = new NoticeDTO(num,menu, author, title, null, writeday, readcnt, -1, -1, repindent);
-				
-				list.add(dto);
-			}
-			to.setList(list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(rs, pstmt, conn);
-		}
-		
-		return to;
-	}
-	
-	public PageTO page3(int curpage) {
-		PageTO to = new PageTO(curpage);
-		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "SELECT * FROM (SELECT ROWNUM rnum, num, author, title, writeday, readcnt, repindent from(SELECT * FROM QNA order by reproot desc, repstep asc)) WHERE rnum >= ? AND rnum <= ?";
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			
-			int amount = getAmount(conn);
-			to.setAmount(amount);
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, to.getStartnum());
-			pstmt.setInt(2, to.getEndnum());
-			
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				int num = rs.getInt("num");
-				int menu = rs.getInt("menu");
-				String author = rs.getString("author");
-				String title = rs.getString("title");
-				String writeday = rs.getString("writeday");
-				int readcnt = rs.getInt("readcnt");
-				int repindent = rs.getInt("repindent");
-				
-				NoticeDTO dto = new NoticeDTO(num,menu, author, title, null, writeday, readcnt, -1, -1, repindent);
-				
-				list.add(dto);
-			}
-			to.setList(list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(rs, pstmt, conn);
-		}
-		
-		return to;
-	}
 	
 	public List<NoticeDTO> get3notice(int mmm) {
 		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
@@ -621,81 +536,6 @@ public class NoticeDAO {
 		}
 		
 		return to;
-	}
-
-	public NoticeDTO qnaUpdateui(int num) {
-		NoticeDTO dto = null;
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "SELECT * FROM QNA WHERE num = ?";
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				int menu = rs.getInt("menu");
-				String author = rs.getString("author");
-		        String title = rs.getString("title");
-		        String content = rs.getString("content");
-		        String writeday = rs.getString("writeday");
-		        int readcnt = rs.getInt("readcnt");
-		        int reproot = rs.getInt("reproot");
-		        int repstep = rs.getInt("repstep");
-		        int repindent = rs.getInt("repindent");
-		        
-		        dto = new NoticeDTO(num,menu,author, title, content, writeday, readcnt, reproot, repstep, repindent);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(rs, pstmt, conn);
-		}
-		
-		return dto;
-	}
-
-	public void qnaUpdate(NoticeDTO dto) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "UPDATE QNA SET author = ?, title = ?, content = ?, writeday=sysdate WHERE num = ?";
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getAuthor());
-			pstmt.setString(2, dto.getTitle());		
-			pstmt.setString(3, dto.getContent());
-			pstmt.setInt(4, dto.getNum());
-			
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(null, pstmt, conn);
-		}
-	}
-
-	public void qnaDelete(int num) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM QNA WHERE num = ?";
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(null, pstmt, conn);
-		}
-		
 	}
 
 }	

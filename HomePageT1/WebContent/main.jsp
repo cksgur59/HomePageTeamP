@@ -19,7 +19,13 @@ li{
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<c:if test="${login == null }">
+	
+	<!-- 임시 관리자 페이지 이동 끝 -->
+
+	<div id="board">
+
+		<div id="wapper">
+			<c:if test="${login == null }">
 		<script type="text/javascript">
 			location.href = "login.jsp";
 		</script>
@@ -41,18 +47,14 @@ li{
 		
 		<button onclick="go_adminPage()">관리자 페이지</button>
 	</c:if>
-	
+	<c:if test="${login != null}">
+		<button><a href="mypage.do?id=${login.id}">마이페이지</a></button>
+	</c:if>
 	<script type="text/javascript">
 function go_adminPage(){
 location.href = "adminPage.do";
 }
 </script>
-	<!-- 임시 관리자 페이지 이동 끝 -->
-
-	<div id="board">
-
-		<div id="wapper">
-
 
 			<!-- 헤더 시작 -->
 			<div id="maintop">EZEN PROGRAMING CLASS</div>
@@ -63,9 +65,9 @@ location.href = "adminPage.do";
 					<li value="linotice">공지사항</li>
 					<li value="liupdate">업데이트</li>
 					<li value="freenotice">자유게시판</li>
-					<li value="screenshot">스크린샷</li>
-					<li value="upload">자료실</li>
-					<li value="qna">묻고답하기</li>
+					<li>스크린샷</li>
+					<li>자료실</li>
+					<li>고객센터</li>
 				</ul>
 				<script type="text/javascript">
 					$("li[value='linotice']").click(function(){
@@ -73,9 +75,6 @@ location.href = "adminPage.do";
 					});
 					$("li[value='freenotice']").click(function(){
 						location.href = "freenotice.do";
-					});
-					$("li[value='qna']").click(function(){
-						location.href = "qna.do";
 					});
 				</script>
 			</header>

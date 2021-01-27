@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<form action="newPostui2.do">
+<form action="newPostui.do">
 	<input type="submit" value="글작성">
 </form>
 <br>
@@ -68,7 +68,7 @@
 						&nbsp;&nbsp;
 					</c:forEach>
 					
-					<a href="read2.do?num=${dto.num}">
+					<a href="read.do?num=${dto.num}">
 						${dto.title}
 					</a>
 				</td>
@@ -86,12 +86,11 @@
 	<jsp:include page="page2.jsp"/>
 </div>
 
-<form action="search2.do">
+<form action="search.do">
 <select name="searchoption">
 	<option value="author">작성자</option>
 	<option value="title">제목</option>
 	<option value="content">내용</option>
-	<option value="title_content">제목+내용</option>
 </select>
 <input name="searchkeyword">
 <input type="submit" value="검색">

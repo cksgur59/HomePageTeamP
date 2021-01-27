@@ -6,20 +6,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.DB.NoticeDAO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class QnADeleteCommand implements Command {
+public class MemberImgUpload implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		String snum = request.getParameter("num");
-		int num = Integer.parseInt(snum);
 		
-		new NoticeDAO().qnaDelete(num);
 		
-		return new CommandAction(true, "qna.do");
+		
+		return null;
 	}
 
 }
-

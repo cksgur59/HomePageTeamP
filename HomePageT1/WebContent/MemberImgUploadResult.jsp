@@ -8,15 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>파일 업로드 상태 화면</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>파일 업로드</h1>
-<form action="mupload" method="post" enctype="multipart/form-data">
-   ID: <input name="id"><br>
-   첨부파일: <input type="file" name="file"><br>
-   <input type="submit" value="업로드">
-</form>
+
+<h1>파일 업로드 상태 화면</h1>
+
+ID: ${id} <br>
+첨부파일: <a href="download?filename=${fileName}">${orgFileName}</a>
+
 </body>
 </html>
