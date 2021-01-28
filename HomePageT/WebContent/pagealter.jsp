@@ -35,9 +35,9 @@
 
 			<header>
 				<ul>
-					<li>공지사항</li>
+					<li><a href="notice.do">공지사항</li>
 					<li>업데이트</li>
-					<li><a href="list.do">자유게시판</a></li>
+					<li><a href="freenotice.do">자유게시판</a></li>
 					<li>스크린샷</li>
 					<li>자료실</li>
 					<li>고객센터</li>
