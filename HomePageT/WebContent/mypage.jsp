@@ -10,6 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
+li{
+	cursor: pointer;
+}
 	table{
 	width: 650px;
 	height: 650px;
@@ -35,7 +38,7 @@
 	display: none;
 	}
 	</style>
-<title>임시 마이페이지</title>
+<title>마이페이지</title>
 <link href="mypage.css" rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -45,30 +48,30 @@
 	
 	<div id="board">
 		<div id="wapper">
-		<form action="main.do">
-	<input type="submit" value="메인">
-	</form>
 			<!-- 헤더 시작 -->
 			<div id="maintop">EZEN PROGRAMING CLASS</div>
-			<h4>DEVELOPER - 이찬혁, 김승훈, 윤승수</h4>
-
 			<header>
 				<ul>
-					<li>공지사항</li>
-					<li>업데이트</li>
-					<li>자유게시판</li>
-					<li>스크린샷</li>
-					<li>자료실</li>
-					<li>고객센터</li>
+					<li value="linotice">공지사항</li>
+					<li value="maingo">메인페이지</li>
+					<li value="freenotice">자유게시판</li>
 				</ul>
+				<script type="text/javascript">
+					$("li[value='linotice']").click(function(){
+						location.href = "notice.do";
+					});
+					$("li[value='freenotice']").click(function(){
+						location.href = "freenotice.do";
+					});
+					$("li[value='maingo']").click(function(){
+						location.href = "main.do";
+					});
+				</script>
 			</header>
 		</div>
-		
 		<div id="mypage">
 			<h3>${login.name}님의 마이페이지</h3>
 		</div>
-	
-	<hr>
 <table>
 	<tr style="width: 200px;"> 
 		<th style="height: 30px;">목록</th>
@@ -112,9 +115,34 @@
 		<td><button name = "phoneNumber">수정</button></td>
 		<td style="height: 60px;"><button name = "address">수정</button></td>
 	</tr>
-
-
 </table>
+<br><br>
+<!-- footer -->
+			<footer>
+			<br>
+				<ul>
+					<li value="logoutgo">로그아웃</li>
+					<c:if test="${login.rights =='admin'}">
+					<li value="admingo">관리자페이지</li>	
+					</c:if>
+					
+				</ul>
+				<script type="text/javascript">
+					$("li[value='logoutgo']").click(function(){
+						var answer=confirm("정말 로그아웃 하시겠습니까?");
+			      		
+			      		if(answer==true){
+			      			location.href = "logout.do";
+			      		}
+					});
+					$("li[value='admingo']").click(function(){
+						location.href = "adminPage.do";
+					});
+				</script>
+			</footer>
+			
+			
+			
 <input name="idval" type="hidden" value="${dto.id}">
 <input name="gender" type="hidden" value="${dto.gender }">
 <script type="text/javascript">

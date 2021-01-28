@@ -10,6 +10,9 @@
 <meta charset="UTF-8">
 <title>메인</title>
 <style type="text/css">
+body {
+    background: #3d516b;
+}
 li{
 	cursor: pointer;
 }
@@ -30,31 +33,7 @@ li{
 			location.href = "login.jsp";
 		</script>
 	</c:if>
-	<button onclick="logout_confirm()">로그아웃</button>
 
-	<script type="text/javascript">
-      	function logout_confirm(){
-      		var answer=confirm("정말 로그아웃 하시겠습니까?");
-      		
-      		if(answer==true){
-      			location.href = "logout.do";
-      		}
-      	}
-      	
-      </script>
-      <!-- 임시 관리자 페이지 이동 시작-->
-	<c:if test="${login.rights =='admin'}">
-		
-		<button onclick="go_adminPage()">관리자 페이지</button>
-	</c:if>
-	<c:if test="${login != null}">
-		<button><a href="mypage.do?id=${login.id}">마이페이지</a></button>
-	</c:if>
-	<script type="text/javascript">
-function go_adminPage(){
-location.href = "adminPage.do";
-}
-</script>
 
 			<!-- 헤더 시작 -->
 			<div id="maintop">EZEN PROGRAMING CLASS</div>
@@ -63,11 +42,8 @@ location.href = "adminPage.do";
 			<header>
 				<ul>
 					<li value="linotice">공지사항</li>
-					<li value="liupdate">업데이트</li>
+					<li value="mypagego">마이페이지</li>
 					<li value="freenotice">자유게시판</li>
-					<li>스크린샷</li>
-					<li>자료실</li>
-					<li>고객센터</li>
 				</ul>
 				<script type="text/javascript">
 					$("li[value='linotice']").click(function(){
@@ -75,6 +51,9 @@ location.href = "adminPage.do";
 					});
 					$("li[value='freenotice']").click(function(){
 						location.href = "freenotice.do";
+					});
+					$("li[value='mypagego']").click(function(){
+						location.href = "mypage.do?id=${login.id}";
 					});
 				</script>
 			</header>
@@ -143,13 +122,25 @@ location.href = "adminPage.do";
 			<!-- footer -->
 			<footer>
 				<ul>
-					<li>하단부1</li>
-					<li>하단부2</li>
-					<li>하단부3</li>
-					<li>하단부4</li>
+					<li value="logoutgo">로그아웃</li>
+					<c:if test="${login.rights =='admin'}">
+					<li value="admingo">관리자페이지</li>	
+					</c:if>
+					
 				</ul>
+				<script type="text/javascript">
+					$("li[value='logoutgo']").click(function(){
+						var answer=confirm("정말 로그아웃 하시겠습니까?");
+			      		
+			      		if(answer==true){
+			      			location.href = "logout.do";
+			      		}
+					});
+					$("li[value='admingo']").click(function(){
+						location.href = "adminPage.do";
+					});
+				</script>
 			</footer>
-
 		</div>
 	</div>
 </body>

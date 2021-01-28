@@ -14,8 +14,18 @@
 </head>
 <body>
 <style type="text/css">
+	div#mm {
+    width: 1200px;
+    height : 600px;
+    padding: 60px 25px 80px;
+    margin: 150px auto;
+    background: #f8d348;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 	body {
-    	background: #ffd700 ;
+    	background: #3d516b ;
 	}
 	
 	.itsme {
@@ -39,15 +49,8 @@
 </style>
 </head>
 <body>
+<div id="mm">
 
-<form action="freenewPostui.do">
-
-	<input type="submit" value="글작성">
-</form>
-<br>
-<form action="main.do">
-	<input type="submit" value="메인">
-</form>
 <h1>자유게시판</h1>
 
 <table>
@@ -97,7 +100,18 @@
 </select>
 <input name="searchkeyword">
 <input type="submit" value="검색">
-
 </form>
+<br>
+<br>
+<br>
+<form action="freenewPostui.do">
+
+	<input type="submit" value="글작성">
+</form>
+<br>
+<form action="main.do">
+	<input type="submit" value="메인">
+</form>
+</div>
 </body>
 </html>

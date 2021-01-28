@@ -14,8 +14,18 @@
 </head>
 <body>
 <style type="text/css">
+div#mm {
+    width: 1200px;
+    height : 600px;
+    padding: 60px 25px 80px;
+    margin: 150px auto;
+    background: #f8d348;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 	body {
-    	background: #ffd700 ;
+    	background: #3d516b ;
 	}
 	
 	.itsme {
@@ -39,16 +49,7 @@
 </style>
 </head>
 <body>
-
-<c:if test="${login.rights =='admin'}">
-<form action="newPostui.do">
-	<input type="submit" value="글작성">
-</form>
-</c:if>
-<br>
-<form action="main.do">
-	<input type="submit" value="메인">
-</form>
+<div id="mm">
 <h1>공지사항</h1>
 
 <table>
@@ -99,8 +100,20 @@
 </select>
 <input name="searchkeyword">
 <input type="submit" value="검색">
-
+<br>
+<br>
+<br>
 </form>
+<c:if test="${login.rights =='admin'}">
+<form action="newPostui.do">
+	<input type="submit" value="글작성">
+</form>
+</c:if>
+<br>
+<form action="main.do">
+	<input type="submit" value="메인">
+</form>
+ </div>
 </body>
 
 
